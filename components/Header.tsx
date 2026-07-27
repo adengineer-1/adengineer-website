@@ -26,10 +26,10 @@ export default function Header() {
     <header className={`site-header ${isScrolled ? "scrolled" : ""}`}>
       <nav className="nav">
         <Link href="/" className="brand" style={{ display: "flex", flexDirection: "column", alignItems: "center", textDecoration: "none" }}>
-          <div style={{ width: '220px', height: '56px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ width: '150px', height: '38px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <img src="/logo.png" alt="ADEN Logo" style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', filter: 'invert(1)' }} />
           </div>
-          <span style={{ fontFamily: "var(--font-display)", fontWeight: "800", fontSize: "14px", letterSpacing: "0.15em", color: "var(--steel)", textTransform: "uppercase", lineHeight: "1", marginTop: "-16px" }}>
+          <span style={{ fontFamily: "var(--font-display)", fontWeight: "800", fontSize: "14px", letterSpacing: "0.15em", color: "var(--steel)", textTransform: "uppercase", lineHeight: "1", marginTop: "3px" }}>
             A.D.Engineers
           </span>
         </Link>
