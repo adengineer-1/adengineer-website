@@ -71,6 +71,11 @@ export const metadata: Metadata = {
     title: "ADEN | Industrial Centrifuges & Process Pumps Manufacturer India",
     description: "Solid-liquid separation equipment built for continuous industrial duty. Engineered and manufactured in Ahmedabad, India since 1990.",
   },
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
