@@ -27,18 +27,18 @@ export default function Contact() {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          // Paste your free Access Key from https://web3forms.com below:
           access_key: "b07332f4-e493-429e-970b-e829f03dd9fd",
-          subject: `Inquiry: ${data.product || "Process Equipment"} - ${data.company || data.name}`,
-          from_name: "ADEN Website Inquiry",
-          to_email: "info@adengineers.co.in",
+          subject: `New Inquiry: ${data.product || "Process Equipment"} - ${data.company || data.name || "Customer"}`,
+          from_name: `${data.name || "Visitor"} (Website Contact Form)`,
+          replyto: data.email,
           name: data.name,
           company: data.company,
           email: data.email,
           phone: data.phone,
           product: data.product,
           industry: data.industry,
-          message: data.message
+          message: data.message,
+          botcheck: false
         })
       });
 
