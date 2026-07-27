@@ -38,7 +38,6 @@ export default function Footer() {
             <Link href="/contact">Contact Us</Link>
             <Link href="/terms">Terms &amp; Conditions</Link>
             <Link href="/privacy">Privacy Policy</Link>
-            <Link href="/sitemap">Sitemap</Link>
           </div>
         </div>
         <div className="footer-bottom">

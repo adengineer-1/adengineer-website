@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.adengineers.co.in";
-  
+
   const routes = [
     "",
     "/products",
@@ -16,8 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/careers",
     "/faq",
     "/privacy",
-    "/terms",
-    "/sitemap"
+    "/terms"
   ];
 
   return routes.map((route) => ({
