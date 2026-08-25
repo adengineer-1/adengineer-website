@@ -50,10 +50,10 @@ export default function Privacy() {
           <p>This site may use basic cookies to remember display preferences. No third-party advertising cookies are used.</p>
 
           <h2 style={{ marginTop: "40px", marginBottom: "16px" }}>Your rights</h2>
-          <p>You may request a copy of the information we hold about you, or ask us to correct or delete it, by writing to aden66@ymail.com.</p>
+          <p>You may request a copy of the information we hold about you, or ask us to correct or delete it, by writing to info@adengineers.co.in.</p>
 
           <h2 style={{ marginTop: "40px", marginBottom: "16px" }}>Contact</h2>
-          <p>Questions about this policy can be sent to aden66@ymail.com or through our <Link href="/contact">Contact Us</Link> page.</p>
+          <p>Questions about this policy can be sent to info@adengineers.co.in or through our <Link href="/contact">Contact Us</Link> page.</p>
         </div>
       </section>
     </main>

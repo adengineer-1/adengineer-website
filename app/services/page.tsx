@@ -43,7 +43,7 @@ export default function Services() {
               <div className="tb-cell"><span className="tb-label">Mobile</span>+91 94280 46318</div>
             </div>
             <div className="tb-row"><div className="tb-cell"><span className="tb-label">Telefax</span>079 2281 8437</div></div>
-            <div className="tb-row"><div className="tb-cell"><span className="tb-label">Email</span>aden66@ymail.com</div></div>
+            <div className="tb-row"><div className="tb-cell"><span className="tb-label">Email</span>info@adengineers.co.in</div></div>
           </div>
         </div>
       </section>

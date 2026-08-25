@@ -44,7 +44,7 @@ export default function Careers() {
           <div className="title-block reveal" style={{ maxWidth: "none" }}>
             <div className="tb-row"><div className="tb-cell"><span className="tb-label">Location</span>Naroda GIDC, Ahmedabad</div></div>
             <div className="tb-row"><div className="tb-cell"><span className="tb-label">Disciplines</span>Design, Production, QC, Sales Engineering</div></div>
-            <div className="tb-row"><div className="tb-cell"><span className="tb-label">To apply</span>aden66@ymail.com</div></div>
+            <div className="tb-row"><div className="tb-cell"><span className="tb-label">To apply</span>info@adengineers.co.in</div></div>
           </div>
         </div>
       </section>

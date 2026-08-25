@@ -36,6 +36,8 @@ export default function Footer() {
           <div>
             <h4>Legal &amp; Contact</h4>
             <Link href="/contact">Contact Us</Link>
+            <a href="tel:+919825172158">+91 98251 72158</a>
+            <a href="mailto:info@adengineers.co.in">info@adengineers.co.in</a>
             <Link href="/terms">Terms &amp; Conditions</Link>
             <Link href="/privacy">Privacy Policy</Link>
           </div>

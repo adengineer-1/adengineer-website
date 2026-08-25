@@ -52,7 +52,7 @@ export default function Terms() {
           <p>These terms are governed by the laws of India, with courts at Ahmedabad, Gujarat having jurisdiction.</p>
 
           <h2 style={{ marginTop: "40px", marginBottom: "16px" }}>Contact</h2>
-          <p>Questions about these terms can be sent to aden66@ymail.com or through our <Link href="/contact">Contact Us</Link> page.</p>
+          <p>Questions about these terms can be sent to info@adengineers.co.in or through our <Link href="/contact">Contact Us</Link> page.</p>
         </div>
       </section>
     </main>

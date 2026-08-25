@@ -13,7 +13,7 @@ export default function FloatingContact() {
       zIndex: 9999
     }}>
       <a
-        href="tel:+919316565097"
+        href="tel:+919825172158"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -38,7 +38,7 @@ export default function FloatingContact() {
       </a>
 
       <a
-        href="https://wa.me/919316565097?text=Hello%20ADEN%20team%2C%20I%20have%20an%20inquiry%20and%20would%20like%20to%20get%20in%20touch%20with%20you."
+        href="https://wa.me/919825172158?text=Hello%20ADEN%20team%2C%20I%20have%20an%20inquiry%20and%20would%20like%20to%20get%20in%20touch%20with%20you."
         target="_blank"
         rel="noopener noreferrer"
         style={{

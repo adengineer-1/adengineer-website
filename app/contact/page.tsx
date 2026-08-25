@@ -143,7 +143,7 @@ export default function Contact() {
               <div className="tb-cell"><span className="tb-label">Mobile</span>+91 94280 46318</div>
             </div>
             <div className="tb-row"><div className="tb-cell"><span className="tb-label">Telefax</span>079 2281 8437</div></div>
-            <div className="tb-row"><div className="tb-cell"><span className="tb-label">Email</span><a href="mailto:aden66@ymail.com" className="text-highlight">aden66@ymail.com</a></div></div>
+            <div className="tb-row"><div className="tb-cell"><span className="tb-label">Email</span><a href="mailto:info@adengineers.co.in" className="text-highlight">info@adengineers.co.in</a></div></div>
             <div className="tb-row"><div className="tb-cell"><span className="tb-label">Breakdown Call</span>079 2282 3263 — <span className="text-highlight">available 24/7, 365 days</span></div></div>
           </div>
         </div>
