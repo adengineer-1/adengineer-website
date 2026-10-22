@@ -1,8 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 
 export default function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -16,30 +19,18 @@ export default function Contact() {
       note.style.color = "var(--steel)";
     }
 
+    setIsSubmitting(true);
+
     const formattedBody = `Name: ${data.name}\nCompany: ${data.company}\nEmail: ${data.email}\nPhone: ${data.phone}\nProduct: ${data.product}\nIndustry: ${data.industry}\n\nRequirement Details:\n${data.message}`;
 
     try {
-      // Using Web3Forms for clean, professional, ad-free emails without any form activation requirements
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify({
-          access_key: "b07332f4-e493-429e-970b-e829f03dd9fd",
-          subject: `New Inquiry: ${data.product || "Process Equipment"} - ${data.company || data.name || "Customer"}`,
-          from_name: `${data.name || "Visitor"} (Website Contact Form)`,
-          replyto: data.email,
-          name: data.name,
-          company: data.company,
-          email: data.email,
-          phone: data.phone,
-          product: data.product,
-          industry: data.industry,
-          message: data.message,
-          botcheck: false
-        })
+        body: JSON.stringify(data),
       });
 
       const result = await response.json();
@@ -51,13 +42,16 @@ export default function Contact() {
         }
         form.reset();
       } else {
-        throw new Error("Web3Forms key not configured or submission failed");
+        throw new Error(result.error || "Submission failed");
       }
-    } catch (error) {
+    } catch (error: unknown) {
+      const errorMsg = error instanceof Error ? error.message : "Submission failed";
       if (note) {
-        note.innerHTML = `Could not send via background API. <a href="mailto:info@adengineers.co.in?subject=${encodeURIComponent(`Inquiry from ${data.name || 'Website'}`)}&body=${encodeURIComponent(formattedBody)}" style="color: var(--amber); text-decoration: underline; font-weight: 600;">Click here to send directly via your Email App</a>.`;
+        note.innerHTML = `${errorMsg}. You can also <a href="mailto:info@adengineers.co.in?subject=${encodeURIComponent(`Inquiry from ${data.name || 'Website'}`)}&body=${encodeURIComponent(formattedBody)}" style="color: var(--amber); text-decoration: underline; font-weight: 600;">click here to send directly via your Email App</a>.`;
         note.style.color = "var(--graphite)";
       }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -112,7 +106,11 @@ export default function Contact() {
                 <textarea id="message" name="message" placeholder="Media to be handled, required throughput or discharge rate, batch or continuous operation, existing basket/impeller size if replacing an old unit, plant location, etc." required></textarea>
               </div>
             </div>
-            <button type="submit" className="btn btn-solid" style={{ marginTop: "20px" }}>Send Inquiry</button>
+            {/* Honeypot field to catch automated spam bots */}
+            <input type="text" name="_hp" tabIndex={-1} autoComplete="off" style={{ display: "none" }} aria-hidden="true" />
+            <button type="submit" className="btn btn-solid" disabled={isSubmitting} style={{ marginTop: "20px", opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? "not-allowed" : "pointer" }}>
+              {isSubmitting ? "Sending Inquiry..." : "Send Inquiry"}
+            </button>
             <p id="form-note" style={{ display: "none", marginTop: "14px", fontSize: "14px", color: "var(--steel)" }}></p>
           </form>
         </div>
