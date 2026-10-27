@@ -40,7 +40,7 @@ export default function GalleryGrid({ photos }: { photos: Photo[] }) {
 
   return (
     <>
-      <div className="filter-bar" role="tablist" aria-label="Filter photos">
+      <div className="tabs" role="tablist" aria-label="Filter photos">
         {categories.map((cat) => (
           <button
             key={cat}
@@ -58,7 +58,7 @@ export default function GalleryGrid({ photos }: { photos: Photo[] }) {
 
       <div className="masonry">
         {visible.map((photo, i) => (
-          <button key={photo.src} type="button" className="masonry-item" onClick={() => setOpen(i)} aria-label={`Open: ${photo.alt}`}>
+          <button key={`${filter}-${photo.src}`} type="button" className="masonry-item" style={{ animationDelay: `${Math.min(i, 8) * 0.06}s` }} onClick={() => setOpen(i)} aria-label={`Open: ${photo.alt}`}>
             <Image
               src={photo.src}
               alt={photo.alt}
@@ -66,7 +66,7 @@ export default function GalleryGrid({ photos }: { photos: Photo[] }) {
               height={photo.height}
               sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 400px"
             />
-            <span className="media-caption">{photo.alt}</span>
+            <span className="mi-cap">{photo.alt}</span>
           </button>
         ))}
       </div>
@@ -75,7 +75,7 @@ export default function GalleryGrid({ photos }: { photos: Photo[] }) {
         <div className="lightbox" role="dialog" aria-modal="true" aria-label={current.alt} onClick={() => setOpen(null)}>
           <img src={current.src} alt={current.alt} onClick={(e) => e.stopPropagation()} />
           <p className="lb-caption">
-            {current.alt} · {open! + 1} / {visible.length}
+            {current.alt} ({open! + 1} of {visible.length})
           </p>
           <button type="button" className="lb-btn lb-close" onClick={() => setOpen(null)} aria-label="Close">
             <Close size={22} />

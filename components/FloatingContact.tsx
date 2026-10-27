@@ -1,22 +1,38 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { contact } from "../lib/site";
-import { Phone, WhatsApp } from "./Icons";
+import { ArrowUp, WhatsApp } from "./Icons";
 
 export default function FloatingContact() {
+  const [showTop, setShowTop] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <div className="floating-contact">
-      <a href={contact.phoneHref} className="fc-call" aria-label="Call us" title="Call us">
-        <Phone size={22} />
-      </a>
+    <>
       <a
         href={contact.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
-        className="fc-wa"
+        className="wa-float"
         aria-label="Chat on WhatsApp"
         title="Chat on WhatsApp"
       >
         <WhatsApp size={26} />
       </a>
-    </div>
+      <button
+        type="button"
+        className={`to-top ${showTop ? "show" : ""}`}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Back to top"
+      >
+        <ArrowUp size={22} />
+      </button>
+    </>
   );
 }

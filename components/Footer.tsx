@@ -4,53 +4,53 @@ import { contact, navLinks, products } from "../lib/site";
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <div className="container">
-        <div className="footer-top">
-          <div className="footer-brand">
-            <img src="/logo.png" alt="ADEN" width={102} height={34} />
+      <div className="container footer-top">
+        <div className="footer-grid">
+          <div data-anim="up">
+            <img src="/brand/logo.png" alt="ADEN" width={108} height={36} />
             <p>
-              Industrial centrifuges engineered and manufactured in Ahmedabad, India since 1990 — built for plants
-              that run around the clock.
+              A.D. Engineers designs and manufactures top discharge centrifuges for the chemical, pharmaceutical,
+              textile and food industries. Naroda, Ahmedabad, since 1990.
             </p>
           </div>
 
-          <div>
+          <div data-anim="up" style={{ ["--d" as string]: ".1s" }}>
             <h4>Company</h4>
-            <div className="footer-links">
+            <ul>
               {navLinks.map((link) => (
-                <Link key={link.href} href={link.href}>{link.label}</Link>
+                <li key={link.href}><Link href={link.href}>{link.label}</Link></li>
               ))}
-              <Link href="/contact">Contact</Link>
-            </div>
+              <li><Link href="/contact">Contact</Link></li>
+            </ul>
           </div>
 
-          <div>
+          <div data-anim="up" style={{ ["--d" as string]: ".2s" }}>
             <h4>Products</h4>
-            <div className="footer-links">
+            <ul>
               {products.map((product) => (
-                <Link key={product.id} href={`/products#${product.id}`}>
-                  {product.name.split(" ")[0]} · {product.short}
-                </Link>
+                <li key={product.id}>
+                  <Link href={`/products#${product.id}`}>{product.name.split(" ")[0]} · {product.short}</Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
-          <div>
+          <div data-anim="up" style={{ ["--d" as string]: ".3s" }}>
             <h4>Get in touch</h4>
-            <div className="footer-links">
-              <a href={contact.phoneHref}>{contact.phone}</a>
-              <a href={`mailto:${contact.email}`}>{contact.email}</a>
-              {contact.addressLines.map((line) => (
-                <span key={line}>{line}</span>
-              ))}
-            </div>
+            <ul>
+              {contact.addressLines.map((line) => <li key={line}>{line}</li>)}
+              <li style={{ marginTop: 12 }}><a href={contact.phoneHref}>{contact.phone}</a></li>
+              <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+            </ul>
           </div>
         </div>
+      </div>
 
-        <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} ADEN — A.D. Engineers. All rights reserved.</span>
+      <div className="footer-bottom">
+        <div className="container">
+          <span>© {new Date().getFullYear()} A.D. Engineers. All rights reserved.</span>
           <nav aria-label="Legal">
-            <Link href="/privacy">Privacy</Link>
+            <Link href="/privacy">Privacy policy</Link>
             <Link href="/terms">Terms</Link>
           </nav>
         </div>

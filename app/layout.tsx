@@ -1,28 +1,30 @@
 import type { Metadata } from "next";
-import { Inter, Inter_Tight } from "next/font/google";
+import { Raleway, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FloatingContact from "../components/FloatingContact";
-import ScrollReveal from "../components/ScrollReveal";
+import Animations from "../components/Animations";
 
-const interTight = Inter_Tight({
-  variable: "--font-inter-tight",
+const raleway = Raleway({
+  variable: "--font-raleway",
   subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const sourceSans = Source_Sans_3({
+  variable: "--font-source",
   subsets: ["latin"],
+  weight: ["400", "600", "700"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.adengineers.co.in"),
   title: {
-    default: "ADEN | Industrial Centrifuges & Process Pumps Manufacturer India",
+    default: "ADEN | Industrial Centrifuge Manufacturer India",
     template: "%s | ADEN - A.D.Engineers",
   },
-  description: "ADEN (A.D.Engineers) manufactures high-performance solid-liquid separation equipment, manual & bag-lifting top discharge centrifuges, rubber-lined centrifuges, and industrial process pumps in Ahmedabad, India since 1990.",
+  description: "ADEN (A.D.Engineers) manufactures high-performance solid-liquid separation equipment, manual & bag-lifting top discharge centrifuges and rubber-lined centrifuges in Ahmedabad, India since 1990.",
   keywords: [
     "ADEN",
     "A.D.Engineers",
@@ -34,7 +36,6 @@ export const metadata: Metadata = {
     "Rubber-Lined Centrifuge",
     "Chemical Centrifuge Machine",
     "Pharmaceutical Centrifuge India",
-    "Industrial Process Pumps Ahmedabad",
     "Centrifuge Manufacturer Gujarat",
     "Top Discharge Centrifuge",
     "Three Point Suspension Centrifuge"
@@ -57,13 +58,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: "https://www.adengineers.co.in",
-    title: "ADEN | Industrial Centrifuges & Process Pumps Manufacturer India",
+    title: "ADEN | Industrial Centrifuge Manufacturer India",
     description: "Solid-liquid separation equipment built for continuous industrial duty. Discover manual & bag-lifting centrifuges engineered in Ahmedabad, India.",
     siteName: "ADEN - A.D.Engineers",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ADEN | Industrial Centrifuges & Process Pumps Manufacturer India",
+    title: "ADEN | Industrial Centrifuge Manufacturer India",
     description: "Solid-liquid separation equipment built for continuous industrial duty. Engineered and manufactured in Ahmedabad, India since 1990.",
   },
   icons: {
@@ -81,14 +82,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${interTight.variable} ${inter.variable}`}
+      className={`${raleway.variable} ${sourceSans.variable}`}
     >
       <body>
         <Header />
         {children}
         <Footer />
         <FloatingContact />
-        <ScrollReveal />
+        <Animations />
       </body>
     </html>
   );

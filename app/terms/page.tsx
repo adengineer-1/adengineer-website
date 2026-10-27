@@ -30,11 +30,11 @@ export default function Terms() {
           <p>These Terms &amp; Conditions govern the use of this website, operated by A.D. Engineers (ADEN), Plot No. 329, Phase I, G.I.D.C., Naroda, Ahmedabad – 382330, Gujarat, India. By using this site, you agree to the terms below.</p>
 
           <h2 style={{ marginTop: "40px", marginBottom: "16px" }}>Use of this website</h2>
-          <p>Content on this website — including product descriptions, technical data and images — is provided for general information about ADEN's centrifuges, pumps and services. It does not constitute a binding offer; all orders are subject to a separate written quotation and order confirmation from ADEN.</p>
+          <p>Content on this website — including product descriptions, technical data and images — is provided for general information about ADEN&apos;s centrifuges and services. It does not constitute a binding offer; all orders are subject to a separate written quotation and order confirmation from ADEN.</p>
 
           <h2 style={{ marginTop: "40px", marginBottom: "16px" }}>Product specifications</h2>
           <ul style={{ paddingLeft: "24px", marginBottom: "24px", color: "var(--steel-light)" }}>
-            <li style={{ marginBottom: "8px" }}>Technical data shown for centrifuges and pumps (basket diameter, filtration area, discharge rate, power input, etc.) reflects standard configurations and may vary by order.</li>
+            <li style={{ marginBottom: "8px" }}>Technical data shown for centrifuges (basket diameter, filtration area, discharge rate, power input, etc.) reflects standard configurations and may vary by order.</li>
             <li style={{ marginBottom: "8px" }}>ADEN reserves the right to modify product specifications, materials of construction or design without prior notice, in line with ongoing engineering improvements.</li>
             <li style={{ marginBottom: "8px" }}>Formal, order-specific specifications are confirmed in writing at the time of quotation.</li>
           </ul>

@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { contact, products } from "../../lib/site";
-import { ArrowRight, Clock, Mail, MapPin, Phone, WhatsApp } from "../../components/Icons";
+import { contact, photos, products } from "../../lib/site";
+import PageBanner from "../../components/PageBanner";
+import { ArrowRight, Mail, MapPin, Phone } from "../../components/Icons";
+
+const delay = (s: number) => ({ ["--d" as string]: `${s}s` });
 
 type Status = { type: "idle" | "sending" | "success" } | { type: "error"; message: string; mailto: string };
 
@@ -44,72 +47,56 @@ export default function Contact() {
 
   return (
     <main>
-      <section className="page-hero">
-        <div className="container">
-          <div className="page-hero-grid">
-            <div>
-              <div className="eyebrow">Contact</div>
-              <h1>Let&apos;s talk about your process.</h1>
-            </div>
-            <p className="lead">
-              Share your requirement and our engineering team will come back with a sized recommendation — usually
-              within one business day.
+      <PageBanner
+        title="Contact us"
+        crumb="Contact"
+        text="Send us your requirement by form, phone or email. We normally reply within one working day."
+        image={photos.entrance.src}
+        alt={photos.entrance.alt}
+        position="center 60%"
+      />
+
+      <div className="container">
+        <div className="info-boxes">
+          <div className="info-box" data-anim="up">
+            <div className="ib-ico"><MapPin size={26} /></div>
+            <h3>Visit our works</h3>
+            <p>A.D. Engineers<br />{contact.addressLines.map((line) => <span key={line}>{line}<br /></span>)}</p>
+          </div>
+          <div className="info-box" data-anim="up" style={delay(0.1)}>
+            <div className="ib-ico"><Phone size={24} /></div>
+            <h3>Give us a call</h3>
+            <p>
+              <a href={contact.phoneHref}>{contact.phone}</a><br />
+              Monday to Saturday
+            </p>
+          </div>
+          <div className="info-box" data-anim="up" style={delay(0.2)}>
+            <div className="ib-ico"><Mail size={26} /></div>
+            <h3>Write to us</h3>
+            <p>
+              <a href={`mailto:${contact.email}`}>{contact.email}</a><br />
+              <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a>
             </p>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="container contact-grid">
-          <div className="contact-cards">
-            <a href={contact.phoneHref} className="contact-card">
-              <div className="tile-icon"><Phone size={22} /></div>
-              <div>
-                <small>Call us</small>
-                <strong>{contact.phone}</strong>
-                <span>Also {contact.phoneAlt}</span>
-              </div>
-            </a>
-            <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer" className="contact-card">
-              <div className="tile-icon"><WhatsApp size={22} /></div>
-              <div>
-                <small>WhatsApp</small>
-                <strong>Chat with our team</strong>
-                <span>Quick questions and photos</span>
-              </div>
-            </a>
-            <a href={`mailto:${contact.email}`} className="contact-card">
-              <div className="tile-icon"><Mail size={22} /></div>
-              <div>
-                <small>Email</small>
-                <strong>{contact.email}</strong>
-                <span>Send drawings or datasheets</span>
-              </div>
-            </a>
-            <div className="contact-card">
-              <div className="tile-icon"><MapPin size={22} /></div>
-              <div>
-                <small>Works</small>
-                <strong>
-                  {contact.addressLines.map((line) => (
-                    <span key={line} style={{ display: "block", color: "inherit", fontSize: "inherit" }}>{line}</span>
-                  ))}
-                </strong>
-              </div>
-            </div>
-            <a href={contact.landlineHref} className="contact-card">
-              <div className="tile-icon"><Clock size={22} /></div>
-              <div>
-                <small>24/7 breakdown line</small>
-                <strong>{contact.landline}</strong>
-                <span>Works open Mon–Sat · breakdown support 365 days</span>
-              </div>
-            </a>
+      <section className="section">
+        <div className="container contact-split" data-anim="up">
+          <div className="contact-side">
+            <span className="supertitle light">Get in touch</span>
+            <h2>Tell us about your requirement</h2>
+            <p>Please include the product, batch size and media if you can. It helps us recommend the right machine faster.</p>
+            <dl>
+              <div><dt>Working hours</dt><dd>Monday to Saturday</dd></div>
+              <div><dt>Breakdown service</dt><dd>24 hours on {contact.phone}</dd></div>
+              <div><dt>Response</dt><dd>Within one working day</dd></div>
+            </dl>
           </div>
 
-          <form className="form-card" onSubmit={handleSubmit}>
-            <h2>Send an inquiry</h2>
-            <p className="muted" style={{ margin: 0 }}>The more process detail you share, the faster we can size the right machine.</p>
+          <form className="enquiry" onSubmit={handleSubmit}>
+            <h2>Enquiry form</h2>
             <div className="form-grid">
               <div className="field">
                 <label htmlFor="name">Full name</label>
@@ -133,7 +120,7 @@ export default function Contact() {
                   {products.map((product) => (
                     <option key={product.id}>{product.name} ({product.short})</option>
                   ))}
-                  <option>Not sure — need a recommendation</option>
+                  <option>Not sure, please recommend</option>
                 </select>
               </div>
               <div className="field">
@@ -149,11 +136,11 @@ export default function Contact() {
                 </select>
               </div>
               <div className="field full">
-                <label htmlFor="message">Process details</label>
+                <label htmlFor="message">Requirement</label>
                 <textarea
                   id="message"
                   name="message"
-                  placeholder="Media handled, batch size or throughput, construction preference, plant location…"
+                  placeholder="Product, batch size, media, SS or rubber-lined, plant location"
                   required
                 />
               </div>
@@ -161,14 +148,14 @@ export default function Contact() {
             {/* Honeypot field to catch automated spam bots */}
             <input type="text" name="_hp" tabIndex={-1} autoComplete="off" style={{ display: "none" }} aria-hidden="true" />
             <div className="form-foot">
-              <p>We reply within one business day.</p>
-              <button type="submit" className="btn btn-primary" disabled={isSending}>
-                {isSending ? "Sending…" : <>Send inquiry <ArrowRight size={18} /></>}
+              <button type="submit" className="btn-split" disabled={isSending} style={{ border: 0, padding: 0, cursor: "pointer", opacity: isSending ? 0.7 : 1 }}>
+                <span className="ico"><ArrowRight size={20} /></span>
+                <span className="txt">{isSending ? "Sending…" : "Send enquiry"}</span>
               </button>
             </div>
             {status.type === "success" && (
               <p className="form-note success" role="status">
-                Thank you — your inquiry has been sent. Our engineering team will respond within one business day.
+                Thank you. Your enquiry has been sent and we will get back to you within one working day.
               </p>
             )}
             {status.type === "error" && (
@@ -179,8 +166,8 @@ export default function Contact() {
           </form>
         </div>
 
-        <div className="container reveal" style={{ marginTop: 64 }}>
-          <div className="map-frame">
+        <div className="container" style={{ marginTop: 80 }} data-anim="up">
+          <div className="map">
             <iframe
               title="ADEN, Naroda GIDC, Ahmedabad"
               src={contact.mapEmbed}

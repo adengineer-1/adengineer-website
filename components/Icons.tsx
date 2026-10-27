@@ -37,6 +37,41 @@ export const Close = (p: IconProps) => (
   <Svg {...p}><path d="M18 6 6 18M6 6l12 12" /></Svg>
 );
 
+export const ArrowUp = (p: IconProps) => (
+  <Svg {...p}><path d="M12 19V5M6 11l6-6 6 6" /></Svg>
+);
+
+export const Play = (p: IconProps) => (
+  <Svg {...p} fill="currentColor"><path d="M7 4.5v15l12-7.5-12-7.5Z" /></Svg>
+);
+
+export const Mail = (p: IconProps) => (
+  <Svg {...p}><rect x="2" y="4" width="20" height="16" rx="1" /><path d="m22 7-10 6L2 7" /></Svg>
+);
+
+export const MapPin = (p: IconProps) => (
+  <Svg {...p}><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></Svg>
+);
+
+export const Quote = (p: IconProps) => (
+  <Svg {...p}><path d="M4 5h16v10H8l-4 4V5Z" /><path d="M8 9h8M8 12h5" /></Svg>
+);
+
+export const Gear = (p: IconProps) => (
+  <Svg {...p}>
+    <circle cx="12" cy="12" r="3" />
+    <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z" />
+  </Svg>
+);
+
+export const Truck = (p: IconProps) => (
+  <Svg {...p}><path d="M1 4h14v12H1zM15 9h4l4 4v3h-8" /><circle cx="6" cy="18" r="2" /><circle cx="18" cy="18" r="2" /></Svg>
+);
+
+export const Wrench = (p: IconProps) => (
+  <Svg {...p}><path d="M14.7 6.3a4 4 0 0 0 5 5L22 14l-8 8-2.3-2.3a4 4 0 0 0-5-5L2 10l8-8 2.3 2.3a4 4 0 0 0 2.4 2Z" /></Svg>
+);
+
 export const Menu = (p: IconProps) => (
   <Svg {...p}><path d="M4 7h16M4 12h16M4 17h16" /></Svg>
 );
@@ -45,57 +80,6 @@ export const Phone = (p: IconProps) => (
   <Svg {...p}>
     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
   </Svg>
-);
-
-export const Mail = (p: IconProps) => (
-  <Svg {...p}><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-10 6L2 7" /></Svg>
-);
-
-export const MapPin = (p: IconProps) => (
-  <Svg {...p}><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></Svg>
-);
-
-export const Clock = (p: IconProps) => (
-  <Svg {...p}><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></Svg>
-);
-
-export const Flask = (p: IconProps) => (
-  <Svg {...p}><path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3" /><path d="M7 15h10" /></Svg>
-);
-
-export const Pill = (p: IconProps) => (
-  <Svg {...p}><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z" /><path d="m8.5 8.5 7 7" /></Svg>
-);
-
-export const Palette = (p: IconProps) => (
-  <Svg {...p}>
-    <path d="M12 22a10 10 0 1 1 10-10c0 2.5-2 4-4.5 4H15a2 2 0 0 0-1.5 3.3A1.6 1.6 0 0 1 12 22Z" />
-    <circle cx="7.5" cy="10.5" r="1" /><circle cx="12" cy="7" r="1" /><circle cx="16.5" cy="10.5" r="1" />
-  </Svg>
-);
-
-export const Layers = (p: IconProps) => (
-  <Svg {...p}><path d="m12 2 10 5-10 5L2 7l10-5Z" /><path d="m2 17 10 5 10-5M2 12l10 5 10-5" /></Svg>
-);
-
-export const Wheat = (p: IconProps) => (
-  <Svg {...p}><path d="M12 22V8" /><path d="M12 8c-2-1-3-3-3-5 2 0 3.5 1.5 3 5ZM12 8c2-1 3-3 3-5-2 0-3.5 1.5-3 5Z" /><path d="M12 14c-2.5 0-4.5-1.5-5-4 2.5 0 4.5 1.5 5 4ZM12 14c2.5 0 4.5-1.5 5-4-2.5 0-4.5 1.5-5 4Z" /></Svg>
-);
-
-export const Droplet = (p: IconProps) => (
-  <Svg {...p}><path d="M12 22a7 7 0 0 0 7-7c0-4-7-13-7-13S5 11 5 15a7 7 0 0 0 7 7Z" /></Svg>
-);
-
-export const Wrench = (p: IconProps) => (
-  <Svg {...p}><path d="M14.7 6.3a4 4 0 0 0 5 5L22 14l-8 8-2.3-2.3a4 4 0 0 0-5-5L2 10l8-8 2.3 2.3a4 4 0 0 0 2.4 2Z" /></Svg>
-);
-
-export const Gauge = (p: IconProps) => (
-  <Svg {...p}><path d="M12 14l4-4" /><path d="M3.3 19a10 10 0 1 1 17.4 0" /></Svg>
-);
-
-export const Shield = (p: IconProps) => (
-  <Svg {...p}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /><path d="m9 12 2 2 4-4" /></Svg>
 );
 
 export const WhatsApp = ({ size = 24 }: { size?: number }) => (

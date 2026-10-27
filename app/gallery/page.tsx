@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { galleryPhotos, galleryVideos } from "../../lib/site";
+import { galleryPhotos, galleryVideos, photos } from "../../lib/site";
+import PageBanner from "../../components/PageBanner";
 import GalleryGrid from "../../components/GalleryGrid";
-import { ArrowRight } from "../../components/Icons";
 
 export const metadata: Metadata = {
   title: "Gallery | Centrifuge Manufacturing, Works Floor & Dispatch Photos",
@@ -21,46 +20,47 @@ export const metadata: Metadata = {
   },
 };
 
+const delay = (s: number) => ({ ["--d" as string]: `${s}s` });
+
 export default function Gallery() {
   return (
     <main>
-      <section className="page-hero">
-        <div className="container">
-          <div className="page-hero-grid">
-            <div>
-              <div className="eyebrow">Gallery</div>
-              <h1>From the works floor to your plant.</h1>
-            </div>
-            <p className="lead">
-              Machines in build and on installation, the team behind them, and shipments leaving our Naroda works.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageBanner
+        title="Gallery"
+        crumb="Gallery"
+        text="Machines at the works and at customer sites, our team, and shipments leaving Naroda."
+        image={photos.dispatchLoaded.src}
+        alt={photos.dispatchLoaded.alt}
+        position="center 70%"
+      />
 
-      <section className="section" style={{ paddingTop: 0 }}>
+      <section className="section">
         <div className="container">
           <GalleryGrid photos={galleryPhotos} />
         </div>
       </section>
 
-      <section className="section section-soft">
+      <section className="section light">
         <div className="container">
-          <div className="section-head center reveal">
-            <div className="eyebrow">Video</div>
-            <h2>See it in motion.</h2>
+          <div className="sec-title">
+            <span className="outline-word" aria-hidden="true">VIDEO</span>
+            <span className="supertitle" data-anim="up">On the works floor</span>
+            <h2 data-anim="up" style={delay(0.1)}>See it in motion</h2>
           </div>
-          <div className="video-grid reveal">
-            {galleryVideos.map((video) => (
-              <div key={video.src} className="video-card">
-                <video src={video.src} controls playsInline preload="metadata" muted aria-label={video.title} />
-              </div>
+          <div className="video-grid">
+            {galleryVideos.map((video, i) => (
+              <video
+                key={video.src}
+                src={video.src}
+                controls
+                playsInline
+                preload="metadata"
+                muted
+                aria-label={video.title}
+                data-anim="up"
+                style={delay(0.15 * i)}
+              />
             ))}
-          </div>
-          <div style={{ textAlign: "center", marginTop: 56 }}>
-            <Link href="/contact" className="btn btn-dark">
-              Arrange a works visit <ArrowRight size={18} />
-            </Link>
           </div>
         </div>
       </section>
