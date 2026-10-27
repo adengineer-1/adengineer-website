@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import ImageSlider from "../../components/ImageSlider";
+import { photos, products } from "../../lib/site";
+import ProductGallery from "../../components/ProductGallery";
+import { ArrowRight } from "../../components/Icons";
 
 export const metadata: Metadata = {
-  title: "Industrial Centrifuges | Manual & Bag-Lifting Top Discharge Centrifuge Machines",
-  description: "Explore ADEN's industrial centrifuge product lines: Manual Top Discharge (Stainless Steel & Rubber-Lined), Bag-Lifting Top Discharge Centrifuges, and 3-Point Suspension separation machines.",
+  title: "Industrial Centrifuges | Manual & Bag-Lifting Top Discharge Centrifuges",
+  description: "Explore ADEN's centrifuge range: manual and bag-lifting top discharge centrifuges in stainless steel and rubber-lined construction.",
   keywords: [
     "Manual Top Discharge Centrifuge",
     "Bag-Lifting Top Discharge Centrifuge",
@@ -12,206 +15,97 @@ export const metadata: Metadata = {
     "Rubber-Lined Centrifuge India",
     "3-Point Suspension Centrifuge",
     "Solid-Liquid Separation Equipment",
-    "Industrial Centrifuges Catalogue",
-    "Chemical Centrifuge Specifications",
-    "Pharmaceutical Centrifuge Machine India",
-    "Top Discharge Centrifuge Manufacturer"
+    "Top Discharge Centrifuge Manufacturer",
   ],
   openGraph: {
     title: "Industrial Centrifuges | Manual & Bag-Lifting Top Discharge Centrifuges",
-    description: "Four precision-engineered centrifuge product lines built in Ahmedabad, India for chemical, pharmaceutical, textile, and food separation duties.",
+    description: "Four centrifuge lines built in Ahmedabad, India for chemical, pharmaceutical, textile and food separation duties.",
     url: "https://www.adengineers.co.in/products",
-  }
+  },
 };
 
 export default function Products() {
   return (
     <main>
-      <section id="manual-ss" style={{ paddingTop: "120px" }}>
+      <section className="page-hero">
         <div className="container">
-          <div className="eyebrow reveal">Product 01 · Basket Centrifuge</div>
-          <div className="datasheet reveal">
-            <div className="datasheet-head">
-              <h3>Manual Top Discharge Centrifuge (Stainless Steel)</h3>
-              <span className="datasheet-tag">Hydro Extractor</span>
+          <div className="page-hero-grid">
+            <div>
+              <div className="eyebrow">Products</div>
+              <h1>Top discharge centrifuges.</h1>
             </div>
-            <div className="datasheet-body">
-              <div>
-                <p style={{ color: "var(--steel-light)", fontSize: "15px" }}>Top-discharge, bottom-driven hydro extractor with stainless steel construction, built for chemical, pharmaceutical, textile and food processing.</p>
-                <ul className="feature-list">
-                  <li>Easy maintenance through a service-friendly design</li>
-                  <li>Efficient product discharge via a single, large discharge opening</li>
-                  <li>Minimal product hold-up — dead zones designed out</li>
-                  <li>Uniform cake formation during feeding through a dynamic feed device</li>
-                </ul>
-                <div className="eyebrow" style={{ marginTop: "20px" }}>Special features</div>
-                <p style={{ fontSize: "14.5px" }}>Designed for multi-product plants, with easy inspectability, 100% product discharge and suitability for cleanroom installation.</p>
-                <div className="eyebrow">Main applications</div>
-                <div className="tag-row">
-                  <span className="tag">Amino acids</span>
-                  <span className="tag">Antibiotics</span>
-                  <span className="tag">Crop protection chemicals</span>
-                  <span className="tag">Fine chemicals</span>
-                  <span className="tag">Pharmaceutical intermediates</span>
-                </div>
-              </div>
-              <div>
-                <img src="/productimages/Bag-Lifting%20Top%20Discharge%20Centrifuge%20(Stainless%20Steel).png" alt="Manual SS" className="product-image" style={{ marginBottom: "18px" }} />
-                <div className="eyebrow">Technical data</div>
-                <table className="spec-table">
-                  <tbody>
-                    <tr><td>Operating principle</td><td>Filtration, solid–liquid separation</td></tr>
-                    <tr><td>Mode of operation</td><td>Batch (Manual Discharge)</td></tr>
-                    <tr><td>Materials of construction</td><td>Stainless steel</td></tr>
-                    <tr><td>Status</td><td>Awaiting full details</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            <p className="lead">
+              Batch filtration centrifuges for solid-liquid separation — choose manual or bag-lifting discharge, in
+              stainless steel or rubber-lined construction.
+            </p>
           </div>
+          <nav className="product-nav" aria-label="Products">
+            {products.map((product) => (
+              <a key={product.id} href={`#${product.id}`}>
+                <b>{product.code}</b>
+                {product.name.split(" ")[0]} · {product.short}
+              </a>
+            ))}
+          </nav>
         </div>
       </section>
 
-      <hr className="divider" />
-
-      <section id="manual-rl">
-        <div className="container">
-          <div className="eyebrow reveal">Product 02 · Basket Centrifuge</div>
-          <div className="datasheet reveal">
-            <div className="datasheet-head">
-              <h3>Manual Top Discharge Centrifuge (Rubber-Lined)</h3>
-              <span className="datasheet-tag">Corrosion Resistant</span>
+      {products.map((product, i) => (
+        <section key={product.id} id={product.id} className={`section ${i % 2 ? "section-soft" : ""}`} style={i === 0 ? { paddingTop: 48 } : undefined}>
+          <div className={`container product-detail ${i % 2 ? "flip" : ""}`}>
+            <div className="reveal">
+              <ProductGallery images={product.images} />
             </div>
-            <div className="datasheet-body">
-              <div>
-                <p style={{ color: "var(--steel-light)", fontSize: "15px" }}>Top-discharge centrifuge with rubber-lined construction for continuous duty on corrosive acidic and alkaline chemicals.</p>
-                <ul className="feature-list">
-                  <li>Easy maintenance through a service-friendly design</li>
-                  <li>Efficient product discharge via a single, large discharge opening</li>
-                  <li>Corrosion resistance against acidic media</li>
-                </ul>
-                <div className="eyebrow" style={{ marginTop: "20px" }}>Special features</div>
-                <p style={{ fontSize: "14.5px" }}>Designed for multi-product plants, with easy inspectability and suitability for corrosive chemical duty.</p>
-                <div className="eyebrow">Main applications</div>
-                <div className="tag-row">
-                  <span className="tag">Chemical processing</span>
-                  <span className="tag">Pharmaceutical</span>
-                  <span className="tag">Corrosive media</span>
-                </div>
+            <div className="product-info reveal">
+              <div className="pc-meta" style={{ justifyContent: "flex-start", gap: 12 }}>
+                <span className={`chip ${product.short === "Stainless Steel" ? "" : "accent"}`}>{product.short}</span>
+                <span className="pc-num">Product {product.code}</span>
               </div>
-              <div>
-                <img src="/productimages/Bag-Lifting%20Top%20Discharge%20Centrifuge%20(Rubber-Lined).png" alt="Manual RL" className="product-image" style={{ marginBottom: "18px" }} />
-                <div className="eyebrow">Technical data</div>
-                <table className="spec-table">
-                  <tbody>
-                    <tr><td>Operating principle</td><td>Filtration, solid–liquid separation</td></tr>
-                    <tr><td>Mode of operation</td><td>Batch (Manual Discharge)</td></tr>
-                    <tr><td>Materials of construction</td><td>Rubber-lined</td></tr>
-                    <tr><td>Status</td><td>Awaiting full details</td></tr>
-                  </tbody>
-                </table>
+              <h2>{product.name}</h2>
+              <p className="lead">{product.description}</p>
+
+              <dl className="spec-list">
+                <div><dt>Operating principle</dt><dd>Filtration, solid–liquid separation</dd></div>
+                <div><dt>Mode of operation</dt><dd>Batch</dd></div>
+                <div><dt>Discharge</dt><dd>{product.discharge}</dd></div>
+                <div><dt>Construction</dt><dd>{product.material}</dd></div>
+              </dl>
+
+              <p className="sub-label">Key features</p>
+              <ul className="check-list">
+                {product.features.map((feature) => <li key={feature}>{feature}</li>)}
+              </ul>
+
+              <p className="sub-label">Main applications</p>
+              <div className="chips">
+                {product.applications.map((app) => <span key={app} className="chip">{app}</span>)}
               </div>
+
+              <Link href="/contact" className="btn btn-dark">
+                Request a quotation <ArrowRight size={18} />
+              </Link>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
-      <hr className="divider" />
-
-      <section id="bag-lifting-ss">
+      <section className="section">
         <div className="container">
-          <div className="eyebrow reveal">Product 03 · Basket Centrifuge</div>
-          <div className="datasheet reveal">
-            <div className="datasheet-head">
-              <h3>Bag-Lifting Top Discharge Centrifuge (Stainless Steel)</h3>
-              <span className="datasheet-tag">Hydro Extractor</span>
+          <div className="cta-band reveal">
+            <div className="cta-copy">
+              <div className="eyebrow">Custom sizes</div>
+              <h2>Need a size or lining not listed here?</h2>
+              <p>Send us your process parameters — media, throughput, batch size — and we&apos;ll specify the right machine.</p>
+              <div className="cta-actions">
+                <Link href="/contact" className="btn btn-primary">
+                  Send your requirement <ArrowRight size={18} />
+                </Link>
+              </div>
             </div>
-            <div className="datasheet-body">
-              <div>
-                <p style={{ color: "var(--steel-light)", fontSize: "15px" }}>Efficient top-discharge centrifuge with bag-lifting mechanism for quick cake removal, built in stainless steel for clean operations.</p>
-                <ul className="feature-list">
-                  <li>Easy maintenance through a service-friendly design</li>
-                  <li>Rapid product discharge using a lifting bag mechanism</li>
-                  <li>Minimal product hold-up — dead zones designed out</li>
-                  <li>Uniform cake formation during feeding</li>
-                </ul>
-                <div className="eyebrow" style={{ marginTop: "20px" }}>Special features</div>
-                <p style={{ fontSize: "14.5px" }}>Designed for multi-product plants, drastically reduces unloading time, and suitable for cleanroom installation.</p>
-                <div className="eyebrow">Main applications</div>
-                <div className="tag-row">
-                  <span className="tag">Amino acids</span>
-                  <span className="tag">Antibiotics</span>
-                  <span className="tag">Crop protection chemicals</span>
-                  <span className="tag">Fine chemicals</span>
-                  <span className="tag">Pharmaceutical intermediates</span>
-                </div>
-              </div>
-              <div>
-                <ImageSlider images={["/productimages/Bag-Lifting%20Top%20Discharge%20Centrifuge%20(Stainless%20Steel).png", "/productimages/Bag-Lifting%20Top%20Discharge%20Centrifuge%20(Stainless%20Steel)2.png"]} altPrefix="Bag-Lifting SS" />
-                <div className="eyebrow">Technical data</div>
-                <table className="spec-table">
-                  <tbody>
-                    <tr><td>Operating principle</td><td>Filtration, solid–liquid separation</td></tr>
-                    <tr><td>Mode of operation</td><td>Batch (Bag-Lifting Discharge)</td></tr>
-                    <tr><td>Materials of construction</td><td>Stainless steel</td></tr>
-                    <tr><td>Status</td><td>Awaiting full details</td></tr>
-                  </tbody>
-                </table>
-              </div>
+            <div className="media">
+              <Image src={photos.plant.src} alt={photos.plant.alt} fill sizes="(max-width: 900px) 100vw, 45vw" />
             </div>
           </div>
-        </div>
-      </section>
-
-      <hr className="divider" />
-
-      <section id="bag-lifting-rl">
-        <div className="container">
-          <div className="eyebrow reveal">Product 04 · Basket Centrifuge</div>
-          <div className="datasheet reveal">
-            <div className="datasheet-head">
-              <h3>Bag-Lifting Top Discharge Centrifuge (Rubber-Lined)</h3>
-              <span className="datasheet-tag">Corrosion Resistant</span>
-            </div>
-            <div className="datasheet-body">
-              <div>
-                <p style={{ color: "var(--steel-light)", fontSize: "15px" }}>Corrosion-resistant rubber-lined centrifuge featuring a bag-lifting mechanism for safe and rapid extraction of highly corrosive media.</p>
-                <ul className="feature-list">
-                  <li>Easy maintenance through a service-friendly design</li>
-                  <li>Rapid product discharge using a lifting bag mechanism</li>
-                  <li>Corrosion resistance against acidic media</li>
-                </ul>
-                <div className="eyebrow" style={{ marginTop: "20px" }}>Special features</div>
-                <p style={{ fontSize: "14.5px" }}>Designed for rapid, safe extraction of corrosive chemicals, minimizing manual handling and downtime.</p>
-                <div className="eyebrow">Main applications</div>
-                <div className="tag-row">
-                  <span className="tag">Chemical processing</span>
-                  <span className="tag">Pharmaceutical</span>
-                  <span className="tag">Corrosive media</span>
-                </div>
-              </div>
-              <div>
-                <img src="/productimages/Bag-Lifting%20Top%20Discharge%20Centrifuge%20(Rubber-Lined).png" alt="Bag-Lifting RL" className="product-image" />
-                <div className="eyebrow">Technical data</div>
-                <table className="spec-table">
-                  <tbody>
-                    <tr><td>Operating principle</td><td>Filtration, solid–liquid separation</td></tr>
-                    <tr><td>Mode of operation</td><td>Batch (Bag-Lifting Discharge)</td></tr>
-                    <tr><td>Materials of construction</td><td>Rubber-lined</td></tr>
-                    <tr><td>Status</td><td>Awaiting full details</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section style={{ background: "var(--graphite)", color: "var(--silver)" }}>
-        <div className="container" style={{ textAlign: "center" }}>
-          <div className="eyebrow" style={{ justifyContent: "center", color: "var(--silver)" }}>Need a size not listed here?</div>
-          <h2 style={{ color: "var(--white)", maxWidth: "26ch", margin: "0 auto 16px" }}>Send us your process parameters and we'll spec the right machine.</h2>
-          <Link href="/contact" className="btn btn-amber" style={{ background: "transparent" }}>Submit an Inquiry</Link>
         </div>
       </section>
     </main>

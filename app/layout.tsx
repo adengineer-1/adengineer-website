@@ -1,23 +1,18 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FloatingContact from "../components/FloatingContact";
 import ScrollReveal from "../components/ScrollReveal";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-display",
+const interTight = Inter_Tight({
+  variable: "--font-inter-tight",
   subsets: ["latin"],
 });
 
 const inter = Inter({
-  variable: "--font-body",
-  subsets: ["latin"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -86,7 +81,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${interTight.variable} ${inter.variable}`}
     >
       <body>
         <Header />

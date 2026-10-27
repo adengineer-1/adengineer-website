@@ -1,109 +1,188 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { clients, countries, photos, stats } from "../../lib/site";
+import { ArrowRight, Gauge, Shield, Wrench } from "../../components/Icons";
 
 export const metadata: Metadata = {
-  title: "About ADEN | 30+ Years of Separation Engineering Heritage in Ahmedabad",
-  description: "Learn about ADEN (A.D.Engineers), Ahmedabad's premier manufacturer of solid-liquid separation centrifuges and process pumps with 7,000+ units delivered globally since 1990.",
+  title: "About ADEN | 35+ Years of Separation Engineering in Ahmedabad",
+  description: "Learn about ADEN (A.D. Engineers), Ahmedabad's manufacturer of solid-liquid separation centrifuges with 7,000+ machines delivered to 15+ countries since 1990.",
   keywords: [
     "About ADEN",
     "A.D.Engineers Ahmedabad",
     "Centrifuge Manufacturer Ahmedabad",
     "Separation Engineering India",
-    "Solid-Liquid Separation Heritage",
     "Industrial Centrifuge Exporter India",
-    "Process Pump Manufacturer Gujarat",
-    "Chemical Centrifuge Supplier",
-    "Naroda GIDC Centrifuge Manufacturer"
+    "Naroda GIDC Centrifuge Manufacturer",
   ],
   openGraph: {
-    title: "About ADEN | 30+ Years of Separation Engineering Heritage",
-    description: "Delivering over 7,000 industrial centrifuges and process pumps to chemical, pharma, and textile plants across 15+ countries since 1990.",
+    title: "About ADEN | 35+ Years of Separation Engineering",
+    description: "Over 7,000 industrial centrifuges and pumps delivered to chemical, pharma and textile plants across 15+ countries since 1990.",
     url: "https://www.adengineers.co.in/company",
-  }
+  },
 };
+
+const principles = [
+  { icon: Gauge, title: "Engineer to the process", text: "Every machine is matched to the media, duty cycle and plant it will run in — not sold off a fixed size chart." },
+  { icon: Wrench, title: "Design for the maintenance shift", text: "Service-friendly construction, large discharge openings and no dead zones keep downtime short." },
+  { icon: Shield, title: "Stand behind every machine", text: "A 24/7 breakdown line and direct access to our engineers, long after commissioning." },
+];
+
+const team = [
+  { name: "Bharat M. Patel", role: "Managing Director" },
+  { name: "Kanu V. Patel", role: "Sales Engineer" },
+  { name: "Joysan Victor", role: "Chief Engineer" },
+  { name: "Hemchand", role: "Production Head" },
+  { name: "Raju Panchal", role: "Quality Control Head" },
+];
+
+const initials = (name: string) =>
+  name.split(" ").filter((part) => !part.endsWith(".")).map((part) => part[0]).slice(0, 2).join("");
 
 export default function Company() {
   return (
     <main>
-      <section style={{ paddingTop: "120px" }}>
-        <div className="container two-col">
+      <section className="page-hero">
+        <div className="container">
+          <div className="page-hero-grid">
+            <div>
+              <div className="eyebrow">About us</div>
+              <h1>Separation engineering since 1990.</h1>
+            </div>
+            <p className="lead">
+              ADEN provides mechanical solid-liquid separation solutions — centrifuges and pumps — to manufacturers in
+              India and across 15+ countries.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div className="container reveal">
+        <div className="media wide-media">
+          <Image src={photos.teamWorkshop.src} alt={photos.teamWorkshop.alt} fill preload sizes="(max-width: 1240px) 100vw, 1200px" style={{ objectPosition: "center 40%" }} />
+        </div>
+      </div>
+
+      <section className="section">
+        <div className="container story-grid">
+          <div className="photo-stack reveal" style={{ padding: 0 }}>
+            <div className="media" style={{ aspectRatio: "3 / 4", borderRadius: "var(--radius-lg)" }}>
+              <Image src={photos.director.src} alt={photos.director.alt} fill sizes="(max-width: 960px) 100vw, 40vw" />
+            </div>
+          </div>
+          <div className="story-copy reveal">
+            <div className="eyebrow">Our story</div>
+            <p className="intro">
+              We support our customers with <span>effective, reliable and profitable</span> process equipment — from
+              the first consultation to installation, commissioning and after-sales support.
+            </p>
+            <p>
+              At the beginning of most separation problems sits a question of process, not just equipment. Analysing
+              that problem and matching it to the right technology takes long experience in plant and machinery. ADEN
+              has answered that question for manufacturers for more than three decades.
+            </p>
+            <p>
+              Since 1990 we have delivered over 7,000 centrifuges and pumps to pharmaceutical, chemical, textile and
+              food-processing plants that depend on them running shift after shift — all designed, fabricated and
+              tested at our works in Naroda GIDC, Ahmedabad.
+            </p>
+            <div className="stats" style={{ marginTop: 36, background: "var(--line)", gridTemplateColumns: "1fr 1fr" }}>
+              {stats.slice(1, 3).map((stat) => (
+                <div key={stat.label} style={{ background: "var(--bg-soft)", padding: "26px 24px" }}>
+                  <strong style={{ color: "var(--ink)", fontSize: 40 }}>{stat.value}</strong>
+                  <span style={{ color: "var(--muted)" }}>{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-soft">
+        <div className="container">
+          <div className="section-head reveal">
+            <div>
+              <div className="eyebrow">What guides us</div>
+              <h2>How we build every machine.</h2>
+            </div>
+            <p>Three principles that have kept ADEN machines running on factory floors for decades.</p>
+          </div>
+          <div className="tile-grid reveal">
+            {principles.map((item) => (
+              <div key={item.title} className="tile">
+                <div className="tile-icon"><item.icon size={22} /></div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container split reverse">
           <div className="reveal">
-            <div className="eyebrow">Who we are</div>
-            <p style={{ fontSize: "19px", color: "var(--steel)", fontFamily: "var(--font-display)", fontWeight: 500, lineHeight: 1.4 }}>ADEN provides innovative solutions in <span className="text-highlight">mechanical and thermal solid-liquid separation</span>, offering centrifuges and pumps on a global basis.</p>
-            <p>We support our customers with effective, reliable and profitable process technology equipment. Our goal is an all-encompassing, professional service — starting at the initial consultation and continuing through installation, commissioning and after-sales support.</p>
-            <p>At the beginning of most separation problems sits a question of process, not just equipment. Analysing that problem and matching it to the right process technology takes long experience in plant and machinery. ADEN has answered that question for manufacturers for more than <span className="text-highlight">three decades</span>.</p>
-            <p>Since 1990, ADEN has delivered <span className="text-highlight">over 7,000 centrifuges and pumps</span> to customers in more than <span className="text-highlight">15 countries</span> — equipment specified into pharmaceutical, chemical, textile and food-processing plants that depend on it running shift after shift.</p>
-          </div>
-          <div className="reveal" style={{ justifySelf: "end", display: "flex", justifyContent: "center", width: "100%" }}>
-            <div style={{ border: "1px solid var(--silver)", padding: "12px", background: "var(--white)", display: "inline-block" }}>
-              <img src="/company-profile.png" alt="ADEN facility and equipment" style={{ maxHeight: "480px", width: "auto", maxWidth: "100%", display: "block", objectFit: "contain" }} />
+            <div className="media" style={{ aspectRatio: "4 / 3", borderRadius: "var(--radius-lg)" }}>
+              <Image src={photos.teamGroup.src} alt={photos.teamGroup.alt} fill sizes="(max-width: 960px) 100vw, 50vw" />
             </div>
+          </div>
+          <div className="reveal">
+            <div className="eyebrow">Our people</div>
+            <h2>A senior team, close to the work.</h2>
+            <p className="lead">
+              Design, sales engineering, production and quality control sit together on one site — so questions get
+              answered by the people who build the machine.
+            </p>
+          </div>
+        </div>
+        <div className="container" style={{ marginTop: 56 }}>
+          <div className="team-grid reveal">
+            {team.map((person) => (
+              <div key={person.name} className="person">
+                <div className="avatar">{initials(person.name)}</div>
+                <h3>{person.name}</h3>
+                <p>{person.role}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section style={{ background: "var(--white)", borderTop: "1px solid var(--silver)", borderBottom: "1px solid var(--silver)" }}>
+      <section className="section section-dark">
         <div className="container">
           <div className="section-head reveal">
-            <h2>What guides how we build</h2>
+            <div>
+              <div className="eyebrow">Global reach</div>
+              <h2>Running in plants across 15+ countries.</h2>
+            </div>
+            <p style={{ color: "#9da5b1" }}>Export markets served to date — and a long list of customers closer to home.</p>
           </div>
-          <div className="grid-3 reveal">
-            <div className="card">
-              <div className="index">Principle 01</div>
-              <h3>Engineer to the process, not the catalogue</h3>
-              <p>Every centrifuge or pump is matched to the media, the duty cycle and the plant it will run in — not sold off a fixed size chart.</p>
-            </div>
-            <div className="card">
-              <div className="index">Principle 02</div>
-              <h3>Design for the maintenance shift</h3>
-              <p>Service-friendly construction, single large discharge openings and minimal dead zones keep unplanned downtime short.</p>
-            </div>
-            <div className="card">
-              <div className="index">Principle 03</div>
-              <h3>Stand behind what leaves the works</h3>
-              <p>A 24/7 breakdown line and direct access to our engineering team back every machine we ship, long after commissioning.</p>
-            </div>
+          <div className="pill-cloud reveal">
+            {countries.map((country) => <span key={country}>{country}</span>)}
+          </div>
+          <h3 className="reveal" style={{ marginTop: 64, marginBottom: 20 }}>Selected customers</h3>
+          <div className="pill-cloud reveal">
+            {clients.map((client) => <span key={client}>{client}</span>)}
           </div>
         </div>
       </section>
 
-      <section>
+      <section className="section">
         <div className="container">
-          <div className="section-head reveal">
-            <h2>The team behind the equipment</h2>
-            <p>A small, senior team spanning design, sales engineering, production and quality control.</p>
-          </div>
-          <div className="grid-3 reveal">
-            <div className="card">
-              <img src="/WhatsApp%20Image%202026-07-20%20at%206.25.12%20PM.jpeg" alt="Bharat M. Patel" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover", objectPosition: "center 15%", border: "1px solid var(--silver)", marginBottom: "14px", display: "block" }} />
-              <h3>Bharat M. Patel</h3>
-              <p>Managing Director</p>
+          <div className="cta-band reveal">
+            <div className="cta-copy">
+              <div className="eyebrow">Visit the works</div>
+              <h2>See how your machine will be built.</h2>
+              <p>We welcome customer visits to our Naroda works. Get in touch to arrange one, or send us your requirement.</p>
+              <div className="cta-actions">
+                <Link href="/contact" className="btn btn-primary">
+                  Contact us <ArrowRight size={18} />
+                </Link>
+                <Link href="/gallery" className="btn btn-ghost-light">View gallery</Link>
+              </div>
             </div>
-            <div className="card">
-              <img src="/WhatsApp%20Image%202026-07-20%20at%206.25.12%20PM.jpeg" alt="Kanu V. Patel" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover", objectPosition: "center 15%", border: "1px solid var(--silver)", marginBottom: "14px", display: "block" }} />
-              <h3>Kanu V. Patel</h3>
-              <p>Sales Engineer</p>
-            </div>
-            <div className="card">
-              <img src="/WhatsApp%20Image%202026-07-20%20at%206.25.12%20PM.jpeg" alt="Joysan Victor" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover", objectPosition: "center 15%", border: "1px solid var(--silver)", marginBottom: "14px", display: "block" }} />
-              <h3>Joysan Victor</h3>
-              <p>Chief Engineer</p>
-            </div>
-            <div className="card">
-              <img src="/WhatsApp%20Image%202026-07-20%20at%206.25.12%20PM.jpeg" alt="Hemchand" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover", objectPosition: "center 15%", border: "1px solid var(--silver)", marginBottom: "14px", display: "block" }} />
-              <h3>Hemchand</h3>
-              <p>Production Head</p>
-            </div>
-            <div className="card">
-              <img src="/WhatsApp%20Image%202026-07-20%20at%206.25.12%20PM.jpeg" alt="Raju Panchal" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover", objectPosition: "center 15%", border: "1px solid var(--silver)", marginBottom: "14px", display: "block" }} />
-              <h3>Raju Panchal</h3>
-              <p>Quality Control Head</p>
-            </div>
-            <div className="card" style={{ alignItems: "flex-start", justifyContent: "center" }}>
-              <div className="index">Join us</div>
-              <h3>Work with our engineering team</h3>
-              <p>Have a separation or pumping problem that needs a proper look? Talk to us directly.</p>
-              <Link href="/contact" className="card-link">Start an inquiry</Link>
+            <div className="media">
+              <Image src={photos.entrance.src} alt={photos.entrance.alt} fill sizes="(max-width: 900px) 100vw, 45vw" />
             </div>
           </div>
         </div>

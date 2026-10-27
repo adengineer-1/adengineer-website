@@ -1,359 +1,280 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import ImageSlider from "../components/ImageSlider";
-import HeroSlider from "../components/HeroSlider";
-import ClientLogo from "../components/ClientLogo";
+import { clients, contact, industries, photos, products, stats } from "../lib/site";
+import { ArrowRight, Droplet, Flask, Gauge, Layers, Palette, Phone, Pill, Shield, Wheat, Wrench } from "../components/Icons";
 
 export const metadata: Metadata = {
-  title: "Industrial Centrifuges & Process Pumps Manufacturer India | Solid-Liquid Separation",
-  description: "ADEN designs and manufactures solid-liquid separation equipment, manual top discharge centrifuges, bag-lifting centrifuges, and process pumps in Ahmedabad, India since 1990.",
-  keywords: ["Industrial Centrifuges India", "Solid-Liquid Separation Equipment", "Manual Top Discharge Centrifuge", "Bag-Lifting Top Discharge Centrifuge", "Chemical Centrifuge India", "Pharmaceutical Centrifuge Manufacturer", "Process Pumps Ahmedabad", "ADEN Centrifuges"],
+  title: "Industrial Centrifuges Manufacturer India | Solid-Liquid Separation",
+  description: "ADEN designs and manufactures manual and bag-lifting top discharge centrifuges in stainless steel and rubber-lined construction in Ahmedabad, India since 1990.",
+  keywords: ["Industrial Centrifuges India", "Solid-Liquid Separation Equipment", "Manual Top Discharge Centrifuge", "Bag-Lifting Top Discharge Centrifuge", "Chemical Centrifuge India", "Pharmaceutical Centrifuge Manufacturer", "ADEN Centrifuges"],
   openGraph: {
-    title: "Industrial Centrifuges & Process Pumps Manufacturer India | ADEN",
-    description: "Solid-liquid separation equipment built for continuous industrial duty. Over 7,000 centrifuges and pumps delivered across 15+ countries.",
+    title: "Industrial Centrifuges Manufacturer India | ADEN",
+    description: "Solid-liquid separation equipment built for continuous industrial duty. Over 7,000 machines delivered across 15+ countries.",
     url: "https://www.adengineers.co.in",
-  }
+  },
 };
+
+const industryIcons = [Pill, Flask, Palette, Layers, Wheat, Droplet];
+
+const process = [
+  { icon: Gauge, title: "Understand the process", text: "We start from your media, throughput and duty cycle — not from a catalogue size." },
+  { icon: Layers, title: "Engineer the machine", text: "Basket, drive, lining and discharge are specified for your plant." },
+  { icon: Wrench, title: "Build & test in-house", text: "Fabricated, machined and run-tested on our Naroda works floor." },
+  { icon: Shield, title: "Commission & support", text: "Installation, spares and a 24/7 breakdown line long after delivery." },
+];
 
 export default function Home() {
   return (
     <main>
+      {/* HERO */}
       <section className="hero">
-        <div className="container">
-          <div className="hero-grid">
-            <div>
-              <div className="eyebrow" style={{ textTransform: "uppercase", letterSpacing: "0.1em" }}>Centrifuges — Engineered in Ahmedabad</div>
-              <h1>Solid-liquid separation equipment built for <em>continuous industrial duty.</em></h1>
-              <p className="hero-sub">ADEN designs and manufactures centrifuges for pharmaceutical, chemical, textile and food manufacturers who cannot afford downtime. Every machine leaves our works floor tested against its own datasheet.</p>
-              <div className="hero-actions">
-                <Link href="/products" className="btn btn-solid">View Product Range</Link>
-                <Link href="/contact" className="btn">Request a Quotation</Link>
-              </div>
+        <div className="container hero-grid">
+          <div>
+            <div className="hero-badge">
+              <b>Since 1990</b> Engineered in Ahmedabad, India
             </div>
-            <div className="hero-visual reveal" style={{ justifySelf: "end", width: "100%" }}>
-              <div style={{ position: "relative", marginBottom: "20px" }}>
-                <HeroSlider slides={[
-                  {
-                    src: "/company-profile.png",
-                    title: "Precision Separation Engineering",
-                    subtitle: "Heavy Industrial Duty"
-                  },
-                  {
-                    src: "/productimages/Bag-Lifting%20Top%20Discharge%20Centrifuge%20(Stainless%20Steel).png",
-                    title: "Stainless Steel Construction",
-                    subtitle: "Bag-Lifting Discharge"
-                  },
-                  {
-                    src: "/productimages/Bag-Lifting%20Top%20Discharge%20Centrifuge%20(Stainless%20Steel)2.png",
-                    title: "High Throughput Extraction",
-                    subtitle: "Continuous Duty"
-                  },
-                  {
-                    src: "/productimages/Bag-Lifting%20Top%20Discharge%20Centrifuge%20(Rubber-Lined).png",
-                    title: "Corrosion Resistant Rubber-Lined",
-                    subtitle: "Acid & Alkali Ready"
-                  }
-                ]} />
-              </div>
-              <div className="title-block" style={{ maxWidth: "100%" }}>
-                <div className="tb-row">
-                  <div className="tb-cell"><span className="tb-label">Manufacturer</span>ADEN</div>
-                  <div className="tb-cell"><span className="tb-label">Product Class</span>Centrifuges</div>
-                </div>
-                <div className="tb-row">
-                  <div className="tb-cell"><span className="tb-label">Est.</span>1990</div>
-                  <div className="tb-cell"><span className="tb-label">Origin</span>Ahmedabad, IN</div>
-                </div>
-                <div className="tb-row">
-                  <div className="tb-cell"><span className="tb-label">Standard</span>Built to order spec.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="stat-strip reveal">
-            <div className="stat">
-              <div className="num">7,000<span className="amber">+</span></div>
-              <div className="label">Centrifuges &amp; pumps delivered</div>
-            </div>
-            <div className="stat">
-              <div className="num">15<span className="amber">+</span></div>
-              <div className="label">Countries served</div>
-            </div>
-            <div className="stat">
-              <div className="num">35<span className="amber">+</span></div>
-              <div className="label">Years in process equipment</div>
-            </div>
-            <div className="stat">
-              <div className="num">24<span className="amber">/7</span></div>
-              <div className="label">Breakdown service line</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section style={{ background: "var(--white)", borderTop: "1px solid var(--silver)", borderBottom: "1px solid var(--silver)" }}>
-        <div className="container two-col" style={{ alignItems: "center" }}>
-          <div className="reveal">
-            <div className="eyebrow">Engineering Excellence</div>
-            <h2>Built for demanding industrial separation environments.</h2>
-            <p style={{ color: "var(--steel-light)" }}>Heavy-duty construction engineered to handle continuous solid-liquid extraction with minimal downtime and maximum operational safety.</p>
-            <ul className="feature-list" style={{ marginTop: "16px" }}>
-              <li>Precision machined drive and basket assemblies</li>
-              <li>High-durability corrosion-resistant finishes</li>
-              <li>Custom mounting and discharge configurations</li>
-            </ul>
-          </div>
-          <div className="reveal" style={{ justifySelf: "end", display: "flex", justifyContent: "center", width: "100%" }}>
-            <div style={{ border: "1px solid var(--silver)", padding: "12px", background: "var(--white)", display: "inline-block" }}>
-              <img src="/company-profile.png" alt="Industrial Centrifuge Equipment" style={{ maxHeight: "440px", width: "auto", maxWidth: "100%", display: "block", objectFit: "contain" }} />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div className="container">
-          <div className="section-head reveal">
-            <h2>Equipment, by application</h2>
-            <p>Four product lines, each built around a specific separation or transfer problem rather than a generic catalogue part.</p>
-          </div>
-          <div className="grid-2 reveal">
-            <div className="card">
-              <div className="index">01 / Manual SS</div>
-              <img src="/productimages/Bag-Lifting%20Top%20Discharge%20Centrifuge%20(Stainless%20Steel).png" alt="Manual Top Discharge SS" className="product-image" />
-              <h3>Manual Top Discharge Centrifuge (Stainless Steel)</h3>
-              <p>Top-discharge, bottom-driven hydro extractor with stainless steel construction, built for chemical, pharmaceutical, textile and food processing.</p>
-              <Link href="/products#manual-ss" className="card-link">View datasheet</Link>
-            </div>
-            <div className="card">
-              <div className="index">02 / Manual RL</div>
-              <img src="/productimages/Bag-Lifting%20Top%20Discharge%20Centrifuge%20(Rubber-Lined).png" alt="Manual Top Discharge RL" className="product-image" />
-              <h3>Manual Top Discharge Centrifuge (Rubber-Lined)</h3>
-              <p>Top-discharge centrifuge with rubber-lined construction for continuous duty on corrosive acidic and alkaline chemicals.</p>
-              <Link href="/products#manual-rl" className="card-link">View datasheet</Link>
-            </div>
-            <div className="card">
-              <div className="index">03 / Bag-Lifting SS</div>
-              <ImageSlider images={["/productimages/Bag-Lifting%20Top%20Discharge%20Centrifuge%20(Stainless%20Steel).png", "/productimages/Bag-Lifting%20Top%20Discharge%20Centrifuge%20(Stainless%20Steel)2.png"]} altPrefix="Bag-Lifting SS" />
-              <h3>Bag-Lifting Top Discharge Centrifuge (Stainless Steel)</h3>
-              <p>Efficient top-discharge centrifuge with bag-lifting mechanism for quick cake removal, built in stainless steel for clean operations.</p>
-              <Link href="/products#bag-lifting-ss" className="card-link">View datasheet</Link>
-            </div>
-            <div className="card">
-              <div className="index">04 / Bag-Lifting RL</div>
-              <img src="/productimages/Bag-Lifting%20Top%20Discharge%20Centrifuge%20(Rubber-Lined).png" alt="Bag-Lifting RL" className="product-image" />
-              <h3>Bag-Lifting Top Discharge Centrifuge (Rubber-Lined)</h3>
-              <p>Corrosion-resistant rubber-lined centrifuge featuring a bag-lifting mechanism for safe and rapid extraction of highly corrosive media.</p>
-              <Link href="/products#bag-lifting-rl" className="card-link">View datasheet</Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section style={{ background: "var(--white)", borderTop: "1px solid var(--silver)", borderBottom: "1px solid var(--silver)" }}>
-        <div className="container two-col">
-          <div className="reveal">
-            <div className="eyebrow">Why manufacturers specify ADEN</div>
-            <h2>Process equipment is only as good as its worst shift.</h2>
-            <p style={{ color: "var(--steel-light)" }}>Our centrifuges and pumps are specified into plants that run three shifts a day, on materials that punish poorly built equipment. That is the standard we design to — not the standard a brochure photograph needs.</p>
-            <ul className="feature-list">
-              <li>Service-friendly design that keeps maintenance windows short</li>
-              <li>Single, large discharge opening for efficient product removal</li>
-              <li>Minimal product hold-up — no dead zones in the flow path</li>
-              <li>Construction in stainless steel, MSRL, CI rubber-lined and polypropylene to match the media</li>
-            </ul>
-          </div>
-          <div className="title-block reveal" style={{ maxWidth: "none" }}>
-            <div className="tb-row"><div className="tb-cell"><span className="tb-label">Industries served</span>Pharmaceutical, Chemical, Textile, Food, Water Treatment, Steel</div></div>
-            <div className="tb-row"><div className="tb-cell"><span className="tb-label">Materials of construction</span>Stainless steel, MSRL, Polypropylene, CI rubber-lined</div></div>
-            <div className="tb-row"><div className="tb-cell"><span className="tb-label">Support</span>24/7 breakdown response, spares &amp; commissioning</div></div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div className="container">
-          <div className="section-head reveal">
-            <h2>Built on three decades of <span className="text-highlight">separation engineering</span></h2>
-            <p>Since 1990, ADEN has supplied centrifuges and pumps to customers across more than 15 countries — equipment still running on factory floors today.</p>
-          </div>
-          <div className="grid-2 reveal">
-            <div className="card">
-              <div className="index">The Problem</div>
-              <h3>Every separation problem starts before the machine does</h3>
-              <p>Choosing the right process technology equipment takes real plant experience — not a catalogue lookup. ADEN's engineering team works from the first consultation through commissioning and after-sales support, so the machine that arrives is the one the process actually needs.</p>
-              <Link href="/company" className="card-link">Read about ADEN</Link>
-            </div>
-            <div className="card">
-              <div className="index">The Standard</div>
-              <h3>Global delivery, local accountability</h3>
-              <p>Our machines run in customer plants across more than 15 countries, backed by a 24/7 breakdown line from our Naroda, Ahmedabad works — for both mechanical and electrical/control system questions.</p>
-              <Link href="/services" className="card-link">See our services</Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section style={{ background: "var(--paper)", borderTop: "1px solid var(--silver)", borderBottom: "1px solid var(--silver)" }}>
-        <div className="container">
-          <div className="section-head reveal">
-            <div>
-              <div className="eyebrow">Valued Customers</div>
-              <h2>Trusted by leading <span className="text-highlight">chemical &amp; pharma manufacturers.</span></h2>
-            </div>
-            <p>A selection of valued industrial plants running ADEN centrifuges and pumps on active production floors.</p>
-          </div>
-
-          <div className="client-grid reveal">
-            <div className="client-card">
-              <div className="client-logo-badge">
-                <ClientLogo id="bodal" name="Bodal Chemicals Ltd" />
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "12px" }}>
-                <span className="client-loc">Vatva, Ahmedabad</span>
-                <span className="tag">Dyes &amp; Chemicals</span>
-              </div>
-            </div>
-
-            <div className="client-card">
-              <div className="client-logo-badge">
-                <ClientLogo id="meghmani" name="Meghmani Organics Ltd" />
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "12px" }}>
-                <span className="client-loc">Vatva, Ahmedabad</span>
-                <span className="tag">Agro &amp; Organics</span>
-              </div>
-            </div>
-
-            <div className="client-card">
-              <div className="client-logo-badge">
-                <ClientLogo id="valiant" name="Valiant Organics Ltd" />
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "12px" }}>
-                <span className="client-loc">Vatva, Ahmedabad</span>
-                <span className="tag">Specialty Chem</span>
-              </div>
-            </div>
-
-            <div className="client-card">
-              <div className="client-logo-badge">
-                <ClientLogo id="ambica" name="Ambica Industries" />
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "12px" }}>
-                <span className="client-loc">Naroda, Ahmedabad</span>
-                <span className="tag">Process Chem</span>
-              </div>
-            </div>
-
-            <div className="client-card">
-              <div className="client-logo-badge">
-                <ClientLogo id="sagardrugs" name="Sagar Drugs & Pharma" />
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "12px" }}>
-                <span className="client-loc">Singarwa, Ahmedabad</span>
-                <span className="tag">Pharma &amp; APIs</span>
-              </div>
-            </div>
-
-            <div className="client-card">
-              <div className="client-logo-badge">
-                <ClientLogo id="rksynthesis" name="R K Synthesis Ltd" />
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "12px" }}>
-                <span className="client-loc">Naroda, Ahmedabad</span>
-                <span className="tag">Intermediates</span>
-              </div>
-            </div>
-
-            <div className="client-card">
-              <div className="client-logo-badge">
-                <ClientLogo id="chemieorganic" name="Chemie Organic Chemicals" />
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "12px" }}>
-                <span className="client-loc">Jhagadia, Bharuch</span>
-                <span className="tag">Organic Chem</span>
-              </div>
-            </div>
-
-            <div className="client-card">
-              <div className="client-logo-badge">
-                <ClientLogo id="gopinath" name="Gopinath Chem Tech" />
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "12px" }}>
-                <span className="client-loc">Ahmedabad, Gujarat</span>
-                <span className="tag">Fine Chemicals</span>
-              </div>
-            </div>
-
-            <div className="client-card">
-              <div className="client-logo-badge">
-                <ClientLogo id="kpinternational" name="K.P. International" />
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "12px" }}>
-                <span className="client-loc">Dahej GIDC</span>
-                <span className="tag">Export Media</span>
-              </div>
-            </div>
-
-            <div className="client-card">
-              <div className="client-logo-badge">
-                <ClientLogo id="matangi" name="Matangi Industries" />
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "12px" }}>
-                <span className="client-loc">Vatva, Ahmedabad</span>
-                <span className="tag">Performance</span>
-              </div>
-            </div>
-
-            <div className="client-card">
-              <div className="client-logo-badge">
-                <ClientLogo id="prima" name="Prima Chemicals" />
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "12px" }}>
-                <span className="client-loc">Odhav, Ahmedabad</span>
-                <span className="tag">Dyestuffs</span>
-              </div>
-            </div>
-
-            <div className="client-card">
-              <div className="client-logo-badge">
-                <ClientLogo id="varahi" name="Varahi Intermediates" />
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "12px" }}>
-                <span className="client-loc">Naroda, Ahmedabad</span>
-                <span className="tag">Chemical Duty</span>
-              </div>
-            </div>
-          </div>
-
-          <div style={{ textAlign: "center", marginTop: "28px" }}>
-            <Link href="/clients" className="card-link">View all valued customer plants</Link>
-          </div>
-        </div>
-      </section>
-
-      <section style={{ background: "var(--graphite)", color: "var(--silver)", padding: "64px 0" }}>
-        <div className="container">
-          <div style={{ textAlign: "center", marginBottom: "40px" }}>
-            <div className="eyebrow" style={{ justifyContent: "center", color: "var(--amber)" }}>Get In Touch</div>
-            <h2 style={{ color: "var(--white)", maxWidth: "24ch", margin: "0 auto 16px" }}>Tell us what you need to separate or process.</h2>
-            <p style={{ color: "var(--silver)", opacity: 0.8, maxWidth: "52ch", margin: "0 auto 24px" }}>
-              Send us your process parameters or visit our Naroda works floor in Ahmedabad. Our engineering team is ready to assist.
+            <h1>
+              Centrifuges built for <span>continuous</span> industrial duty.
+            </h1>
+            <p className="lead">
+              ADEN designs and manufactures top discharge centrifuges for pharmaceutical, chemical, dye and food
+              plants that can&apos;t afford downtime.
             </p>
-            <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap", marginBottom: "32px" }}>
-              <Link href="/contact" className="btn btn-amber">Contact Us</Link>
-              <a href="tel:+919825172158" className="btn" style={{ color: "var(--white)", borderColor: "var(--silver)" }}>Call: +91 98251 72158</a>
+            <div className="hero-actions">
+              <Link href="/products" className="btn btn-primary">
+                Explore products <ArrowRight size={18} />
+              </Link>
+              <Link href="/contact" className="btn btn-outline">
+                Request a quotation
+              </Link>
+            </div>
+            <div className="hero-trust">
+              <div><strong>7,000+</strong>machines delivered</div>
+              <div><strong>15+</strong>countries served</div>
+              <div><strong>35+</strong>years in separation</div>
             </div>
           </div>
 
-          <div style={{ border: "1px solid rgba(255, 255, 255, 0.15)", borderRadius: "4px", overflow: "hidden", height: "360px", width: "100%" }}>
-            <iframe
-              title="ADEN, Naroda GIDC, Ahmedabad"
-              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3670.2784465614277!2d72.66762157531576!3d23.086900679128718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjPCsDA1JzEyLjgiTiA3MsKwNDAnMTIuNyJF!5e0!3m2!1sen!2sin!4v1785147293536!5m2!1sen!2sin"
-              width="100%" height="100%" style={{ border: 0, display: "block" }}
-              allowFullScreen loading="lazy" referrerPolicy="strict-origin-when-cross-origin">
-            </iframe>
+          <div className="hero-collage reveal">
+            <div className="media c-main">
+              <Image src={photos.ssFront.src} alt={photos.ssFront.alt} fill preload sizes="(max-width: 1000px) 60vw, 30vw" style={{ objectPosition: "center 35%" }} />
+            </div>
+            <div className="media">
+              <Image src={photos.plant.src} alt={photos.plant.alt} fill sizes="(max-width: 1000px) 40vw, 22vw" />
+            </div>
+            <div className="hero-card">
+              <span className="tag-pill">Built in-house</span>
+              <div>
+                <div className="big">SS &amp; RL</div>
+                <p>Stainless steel and rubber-lined construction</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CLIENTS */}
+      <div className="marquee-wrap" aria-label="Selected customers">
+        <p className="marquee-label">Running on production floors at leading chemical &amp; pharma manufacturers</p>
+        <div className="marquee">
+          {[...clients, ...clients].map((name, i) => (
+            <span key={i} aria-hidden={i >= clients.length}>{name}</span>
+          ))}
+        </div>
+      </div>
+
+      {/* PRODUCTS */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head reveal">
+            <div>
+              <div className="eyebrow">Product range</div>
+              <h2>Top discharge centrifuges, four ways.</h2>
+            </div>
+            <p>
+              Manual or bag-lifting discharge, in stainless steel or rubber-lined construction — each matched to the
+              media it will run on.
+            </p>
+          </div>
+
+          <div className="product-grid reveal">
+            {products.map((product) => (
+              <Link key={product.id} href={`/products#${product.id}`} className="product-card">
+                <div className="media">
+                  <Image src={product.images[0].src} alt={product.images[0].alt} fill sizes="(max-width: 560px) 100vw, (max-width: 1100px) 50vw, 25vw" />
+                </div>
+                <div className="pc-body">
+                  <div className="pc-meta">
+                    <span className={`chip ${product.short === "Stainless Steel" ? "" : "accent"}`}>{product.short}</span>
+                    <span className="pc-num">{product.code}</span>
+                  </div>
+                  <h3>{product.name}</h3>
+                  <p>{product.description}</p>
+                  <span className="pc-link">
+                    View details <ArrowRight size={16} />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section className="section section-soft">
+        <div className="container split">
+          <div className="photo-stack reveal">
+            <div className="media main">
+              <Image src={photos.teamGroup.src} alt={photos.teamGroup.alt} fill sizes="(max-width: 960px) 100vw, 50vw" />
+            </div>
+            <div className="media inset">
+              <Image src={photos.worksOverview.src} alt={photos.worksOverview.alt} fill sizes="(max-width: 960px) 40vw, 20vw" />
+            </div>
+            <div className="float-stat">
+              <strong>35+ yrs</strong>
+              <span>of separation engineering</span>
+            </div>
+          </div>
+
+          <div className="reveal">
+            <div className="eyebrow">About ADEN</div>
+            <h2>Three decades of solving separation problems.</h2>
+            <p className="lead">
+              Every separation problem starts with a question of process, not just equipment. Our engineering team
+              works with you from first consultation through commissioning and after-sales support.
+            </p>
+            <ul className="check-list">
+              <li>Service-friendly design keeps maintenance windows short</li>
+              <li>Large single discharge opening and minimal product hold-up</li>
+              <li>Stainless steel, MSRL and rubber-lined construction to suit the media</li>
+              <li>24/7 breakdown line from our Naroda, Ahmedabad works</li>
+            </ul>
+            <Link href="/company" className="text-link">
+              More about our company <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* STATS + INDUSTRIES */}
+      <section className="section section-dark">
+        <div className="container">
+          <div className="stats reveal">
+            {stats.map((stat) => (
+              <div key={stat.label}>
+                <strong>{stat.value.replace(/[+]$/, "")}{stat.value.endsWith("+") && <em>+</em>}</strong>
+                <span>{stat.label}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="section-head reveal" style={{ marginTop: 112 }}>
+            <div>
+              <div className="eyebrow">Industries</div>
+              <h2>Specified into plants that run three shifts a day.</h2>
+            </div>
+            <p style={{ color: "#9da5b1" }}>
+              From APIs to dyestuffs, ADEN centrifuges handle the media that punish poorly built equipment.
+            </p>
+          </div>
+
+          <div className="tile-grid reveal">
+            {industries.map((industry, i) => {
+              const Icon = industryIcons[i];
+              return (
+                <div key={industry.name} className="tile">
+                  <div className="tile-icon"><Icon size={22} /></div>
+                  <h3>{industry.name}</h3>
+                  <p>{industry.text}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head reveal">
+            <div>
+              <div className="eyebrow">How we work</div>
+              <h2>From process question to running machine.</h2>
+            </div>
+            <p>One team owns the whole job — so the machine that arrives is the one your process actually needs.</p>
+          </div>
+          <div className="product-grid reveal">
+            {process.map((step, i) => (
+              <div key={step.title} className="tile">
+                <div className="tile-icon"><step.icon size={22} /></div>
+                <span className="step">Step 0{i + 1}</span>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WORKS PREVIEW */}
+      <section className="section section-soft">
+        <div className="container">
+          <div className="section-head reveal">
+            <div>
+              <div className="eyebrow">Inside the works</div>
+              <h2>Built, machined and tested under one roof.</h2>
+            </div>
+            <p>
+              <Link href="/gallery" className="text-link">
+                View full gallery <ArrowRight size={16} />
+              </Link>
+            </p>
+          </div>
+          <div className="bento reveal">
+            <div className="media zoom b1">
+              <Image src={photos.dispatchLoaded.src} alt={photos.dispatchLoaded.alt} fill sizes="(max-width: 860px) 100vw, 50vw" />
+              <span className="media-caption">Ready for dispatch</span>
+            </div>
+            <div className="media zoom b2">
+              <Image src={photos.worksFabrication.src} alt={photos.worksFabrication.alt} fill sizes="(max-width: 860px) 50vw, 25vw" />
+              <span className="media-caption">Fabrication</span>
+            </div>
+            <div className="media zoom b3">
+              <Image src={photos.ssSide.src} alt={photos.ssSide.alt} fill sizes="(max-width: 860px) 50vw, 25vw" style={{ objectPosition: "center 65%" }} />
+              <span className="media-caption">Final assembly</span>
+            </div>
+            <div className="media zoom b4">
+              <Image src={photos.lathe.src} alt={photos.lathe.alt} fill sizes="(max-width: 860px) 50vw, 50vw" />
+              <span className="media-caption">Machining</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section">
+        <div className="container">
+          <div className="cta-band reveal">
+            <div className="cta-copy">
+              <div className="eyebrow">Get in touch</div>
+              <h2>Tell us what you need to separate.</h2>
+              <p>
+                Send your process parameters and our engineers will recommend the right machine — usually within one
+                business day.
+              </p>
+              <div className="cta-actions">
+                <Link href="/contact" className="btn btn-primary">
+                  Request a quotation <ArrowRight size={18} />
+                </Link>
+                <a href={contact.phoneHref} className="btn btn-ghost-light">
+                  <Phone size={18} /> {contact.phone}
+                </a>
+              </div>
+            </div>
+            <div className="media">
+              <Image src={photos.trailerSide.src} alt={photos.trailerSide.alt} fill sizes="(max-width: 900px) 100vw, 45vw" />
+            </div>
           </div>
         </div>
       </section>

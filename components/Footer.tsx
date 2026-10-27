@@ -1,50 +1,58 @@
 import Link from "next/link";
+import { contact, navLinks, products } from "../lib/site";
 
 export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="container">
-        <div className="footer-grid">
-          <div>
-            <Link href="/" className="brand" style={{ display: "inline-flex", flexDirection: "column", alignItems: "flex-start", textDecoration: "none", marginBottom: "16px" }}>
-              <div style={{ width: '150px', height: '38px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <img src="/logo.png" alt="ADEN Logo" style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', filter: 'brightness(0) invert(1)' }} />
-              </div>
-              <span style={{ fontFamily: "var(--font-display)", fontWeight: "800", fontSize: "14px", letterSpacing: "0.15em", color: "#ffffff", textTransform: "uppercase", lineHeight: "1", marginTop: "3px" }}>
-                A.D.Engineers
-              </span>
-            </Link>
-            <p style={{ fontSize: "13.5px", opacity: 0.8, maxWidth: "32ch" }}>
-              Centrifuges and process pumps engineered and manufactured in Ahmedabad, India since 1990.
+        <div className="footer-top">
+          <div className="footer-brand">
+            <img src="/logo.png" alt="ADEN" width={102} height={34} />
+            <p>
+              Industrial centrifuges engineered and manufactured in Ahmedabad, India since 1990 — built for plants
+              that run around the clock.
             </p>
           </div>
+
           <div>
             <h4>Company</h4>
-            <Link href="/company">Company</Link>
-            <Link href="/products">Products</Link>
-            <Link href="/services">Services</Link>
+            <div className="footer-links">
+              {navLinks.map((link) => (
+                <Link key={link.href} href={link.href}>{link.label}</Link>
+              ))}
+              <Link href="/contact">Contact</Link>
+            </div>
           </div>
+
           <div>
-            <h4>Resources</h4>
-            <Link href="/gallery">Gallery</Link>
-            <Link href="/clients">Clients &amp; Reach</Link>
-            <Link href="/certifications">Certifications</Link>
-            <Link href="/blog">Blog</Link>
-            <Link href="/faq">FAQ</Link>
-            <Link href="/careers">Careers</Link>
+            <h4>Products</h4>
+            <div className="footer-links">
+              {products.map((product) => (
+                <Link key={product.id} href={`/products#${product.id}`}>
+                  {product.name.split(" ")[0]} · {product.short}
+                </Link>
+              ))}
+            </div>
           </div>
+
           <div>
-            <h4>Legal &amp; Contact</h4>
-            <Link href="/contact">Contact Us</Link>
-            <a href="tel:+919825172158">+91 98251 72158</a>
-            <a href="mailto:info@adengineers.co.in">info@adengineers.co.in</a>
-            <Link href="/terms">Terms &amp; Conditions</Link>
-            <Link href="/privacy">Privacy Policy</Link>
+            <h4>Get in touch</h4>
+            <div className="footer-links">
+              <a href={contact.phoneHref}>{contact.phone}</a>
+              <a href={`mailto:${contact.email}`}>{contact.email}</a>
+              {contact.addressLines.map((line) => (
+                <span key={line}>{line}</span>
+              ))}
+            </div>
           </div>
         </div>
+
         <div className="footer-bottom">
-          <span>© 2026 ADEN. All rights reserved.</span>
-          <span>Naroda GIDC, Ahmedabad, Gujarat, India</span>
+          <span>© {new Date().getFullYear()} ADEN — A.D. Engineers. All rights reserved.</span>
+          <nav aria-label="Legal">
+            <Link href="/privacy">Privacy</Link>
+            <Link href="/terms">Terms</Link>
+          </nav>
         </div>
       </div>
     </footer>
