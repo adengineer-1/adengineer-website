@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { exportMarketsText, pageMetadata } from "../lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { clients, industries, photos, products } from "../lib/site";
@@ -6,16 +7,13 @@ import HeroSlider, { type HeroSlide } from "../components/HeroSlider";
 import VideoBanner from "../components/VideoBanner";
 import { ArrowRight, Gear, Truck, Wrench } from "../components/Icons";
 
-export const metadata: Metadata = {
-  title: "Industrial Centrifuges Manufacturer India | Solid-Liquid Separation",
-  description: "ADEN designs and manufactures manual and bag-lifting top discharge centrifuges in stainless steel and rubber-lined construction in Ahmedabad, India since 1990.",
+export const metadata: Metadata = pageMetadata({
+  title: "ADEN | Centrifuge Manufacturer India, Exporter to Bangladesh, Africa & Gulf",
+  description: `ADEN (AD Engineers) designs and manufactures manual and bag-lifting top discharge centrifuges in Ahmedabad, India since 1990. Over 3,500 machines supplied, including to ${exportMarketsText}.`,
+  path: "/",
+  image: photos.plant,
   keywords: ["Industrial Centrifuges India", "Solid-Liquid Separation Equipment", "Manual Top Discharge Centrifuge", "Bag-Lifting Top Discharge Centrifuge", "Chemical Centrifuge India", "Pharmaceutical Centrifuge Manufacturer", "ADEN Centrifuges"],
-  openGraph: {
-    title: "Industrial Centrifuges Manufacturer India | ADEN",
-    description: "Top discharge centrifuges for the chemical and pharmaceutical industry. Over 3,500 machines supplied to 5+ countries.",
-    url: "https://www.adengineers.co.in",
-  },
-};
+});
 
 const slides: HeroSlide[] = [
   {
@@ -32,7 +30,7 @@ const slides: HeroSlide[] = [
     position: "center 70%",
     supertitle: "3,500+ machines supplied",
     title: "Delivered to plants in 5+ countries",
-    text: "Every machine is packed and dispatched from our Naroda works, ready for installation at site.",
+    text: "Every machine is packed and dispatched from our Naroda works to plants across India, Bangladesh, African countries and the Gulf.",
     cta: { href: "/gallery", label: "See the works" },
   },
   {

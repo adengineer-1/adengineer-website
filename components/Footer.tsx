@@ -10,7 +10,8 @@ export default function Footer() {
             <img src="/brand/logo.png" alt="ADEN" width={108} height={36} />
             <p>
               A.D. Engineers designs and manufactures top discharge centrifuges for the chemical, pharmaceutical,
-              textile and food industries. Naroda, Ahmedabad, since 1990.
+              textile and food industries. Naroda, Ahmedabad, since 1990. Supplying India, Bangladesh, African
+              countries and the Gulf.
             </p>
           </div>
 

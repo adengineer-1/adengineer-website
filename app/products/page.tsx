@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { exportMarketsText, pageMetadata } from "../../lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { photos, products } from "../../lib/site";
@@ -6,23 +7,13 @@ import PageBanner from "../../components/PageBanner";
 import ProductGallery from "../../components/ProductGallery";
 import { ArrowRight } from "../../components/Icons";
 
-export const metadata: Metadata = {
-  title: "Industrial Centrifuges | Manual & Bag-Lifting Top Discharge Centrifuges",
-  description: "ADEN centrifuge range: manual and bag-lifting top discharge centrifuges in stainless steel and rubber-lined construction.",
-  keywords: [
-    "Manual Top Discharge Centrifuge",
-    "Bag-Lifting Top Discharge Centrifuge",
-    "Stainless Steel Centrifuge Machine",
-    "Rubber-Lined Centrifuge India",
-    "3-Point Suspension Centrifuge",
-    "Top Discharge Centrifuge Manufacturer",
-  ],
-  openGraph: {
-    title: "Industrial Centrifuges | Manual & Bag-Lifting Top Discharge Centrifuges",
-    description: "Four centrifuge lines built in Ahmedabad, India for chemical, pharmaceutical, textile and food duty.",
-    url: "https://www.adengineers.co.in/products",
-  },
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Top Discharge Centrifuges | Manual & Bag-Lifting",
+  description: `ADEN centrifuge range: manual and bag-lifting top discharge centrifuges in stainless steel and rubber-lined construction, built in India and supplied to ${exportMarketsText}.`,
+  path: "/products",
+  image: photos.ssFront,
+  keywords: ["Manual Top Discharge Centrifuge", "Bag-Lifting Top Discharge Centrifuge", "Stainless Steel Centrifuge Machine", "Rubber-Lined Centrifuge India", "3-Point Suspension Centrifuge", "Top Discharge Centrifuge Manufacturer"],
+});
 
 const delay = (s: number) => ({ ["--d" as string]: `${s}s` });
 

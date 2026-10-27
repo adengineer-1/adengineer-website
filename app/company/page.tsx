@@ -1,26 +1,18 @@
 import type { Metadata } from "next";
+import { exportMarketsText, pageMetadata } from "../../lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { clients, countries, photos } from "../../lib/site";
 import PageBanner from "../../components/PageBanner";
 import { ArrowRight } from "../../components/Icons";
 
-export const metadata: Metadata = {
-  title: "About ADEN | Centrifuge Manufacturer in Ahmedabad Since 1990",
-  description: "About ADEN (A.D. Engineers), manufacturers of solid-liquid separation centrifuges at Naroda GIDC, Ahmedabad, with 3,500+ machines supplied to 5+ countries since 1990.",
-  keywords: [
-    "About ADEN",
-    "A.D.Engineers Ahmedabad",
-    "Centrifuge Manufacturer Ahmedabad",
-    "Industrial Centrifuge Exporter India",
-    "Naroda GIDC Centrifuge Manufacturer",
-  ],
-  openGraph: {
-    title: "About ADEN | Centrifuge Manufacturer Since 1990",
-    description: "Over 3,500 centrifuges supplied to chemical, pharma and textile plants in 5+ countries since 1990.",
-    url: "https://www.adengineers.co.in/company",
-  },
-};
+export const metadata: Metadata = pageMetadata({
+  title: "About AD Engineers | Centrifuge Manufacturer Since 1990",
+  description: `About ADEN (AD Engineers), founded by Bharat M. Patel in 1990 at Naroda GIDC, Ahmedabad. Over 3,500 centrifuges supplied to 5+ countries, including ${exportMarketsText}.`,
+  path: "/company",
+  image: photos.teamWorkshop,
+  keywords: ["About ADEN", "AD Engineers Ahmedabad", "Bharat M. Patel", "Industrial Centrifuge Exporter India", "Naroda GIDC Centrifuge Manufacturer"],
+});
 
 const team = [
   { name: "Bharat M. Patel", role: "Managing Director" },
@@ -177,6 +169,10 @@ export default function Company() {
             <span className="outline-word" data-parallax="80" aria-hidden="true" style={{ top: -60, left: -20 }}>GLOBAL</span>
             <span className="supertitle" data-anim="up">Export markets</span>
             <h2 data-anim="up" style={delay(0.1)}>Running in plants across 5+ countries</h2>
+            <p data-anim="up" style={delay(0.15)}>
+              From Ahmedabad we supply centrifuges to customers across India and export to Bangladesh, African countries
+              and the Gulf countries, with support for installation, spares and service.
+            </p>
             <div className="chips" data-anim="up" style={delay(0.2)}>
               {countries.map((country) => <span key={country}>{country}</span>)}
             </div>

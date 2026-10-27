@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FloatingContact from "../components/FloatingContact";
 import Animations from "../components/Animations";
+import { exportMarketsText, jsonLdScript, keywords, organizationJsonLd, siteUrl } from "../lib/seo";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -19,15 +20,13 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.adengineers.co.in"),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "ADEN | Industrial Centrifuge Manufacturer India",
-    template: "%s | ADEN - A.D.Engineers",
+    default: "ADEN | Centrifuge Manufacturer India | Exporter to Bangladesh, Africa & Gulf",
+    template: "%s | ADEN",
   },
-  description: "ADEN (A.D.Engineers) manufactures high-performance solid-liquid separation equipment, manual & bag-lifting top discharge centrifuges and rubber-lined centrifuges in Ahmedabad, India since 1990.",
-  keywords: [
-    "ADEN",
-    "A.D.Engineers",
+  description: `ADEN (A.D. Engineers) manufactures manual and bag-lifting top discharge centrifuges in stainless steel and rubber-lined construction in Ahmedabad, India since 1990, supplying ${exportMarketsText}.`,
+  keywords: keywords(
     "Industrial Centrifuges India",
     "Solid-Liquid Separation Equipment",
     "Manual Top Discharge Centrifuge",
@@ -36,13 +35,14 @@ export const metadata: Metadata = {
     "Rubber-Lined Centrifuge",
     "Chemical Centrifuge Machine",
     "Pharmaceutical Centrifuge India",
-    "Centrifuge Manufacturer Gujarat",
     "Top Discharge Centrifuge",
-    "Three Point Suspension Centrifuge"
-  ],
-  authors: [{ name: "ADEN - A.D.Engineers", url: "https://www.adengineers.co.in" }],
-  creator: "ADEN - A.D.Engineers",
-  publisher: "ADEN - A.D.Engineers",
+    "Three Point Suspension Centrifuge",
+  ),
+  applicationName: "ADEN - A.D. Engineers",
+  authors: [{ name: "ADEN - A.D. Engineers", url: siteUrl }],
+  creator: "ADEN - A.D. Engineers",
+  publisher: "ADEN - A.D. Engineers",
+  category: "Industrial Equipment",
   robots: {
     index: true,
     follow: true,
@@ -57,15 +57,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://www.adengineers.co.in",
-    title: "ADEN | Industrial Centrifuge Manufacturer India",
-    description: "Solid-liquid separation equipment built for continuous industrial duty. Discover manual & bag-lifting centrifuges engineered in Ahmedabad, India.",
-    siteName: "ADEN - A.D.Engineers",
+    url: siteUrl,
+    title: "ADEN | Centrifuge Manufacturer India",
+    description: `Top discharge centrifuges engineered in Ahmedabad, India since 1990. Supplying ${exportMarketsText}.`,
+    siteName: "ADEN - A.D. Engineers",
+    images: [{ url: "/images/machines/plant-installation.jpg", width: 1280, height: 960, alt: "ADEN centrifuges installed at a chemical plant" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ADEN | Industrial Centrifuge Manufacturer India",
-    description: "Solid-liquid separation equipment built for continuous industrial duty. Engineered and manufactured in Ahmedabad, India since 1990.",
+    title: "ADEN | Centrifuge Manufacturer India",
+    description: `Top discharge centrifuges engineered in Ahmedabad, India since 1990. Supplying ${exportMarketsText}.`,
+    images: ["/images/machines/plant-installation.jpg"],
   },
   icons: {
     icon: "/icon.png",
@@ -85,6 +87,7 @@ export default function RootLayout({
       className={`${raleway.variable} ${sourceSans.variable}`}
     >
       <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(organizationJsonLd) }} />
         <Header />
         {children}
         <Footer />

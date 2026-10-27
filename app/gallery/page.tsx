@@ -1,24 +1,16 @@
 import type { Metadata } from "next";
+import { exportMarketsText, pageMetadata } from "../../lib/seo";
 import { galleryPhotos, galleryVideos, photos } from "../../lib/site";
 import PageBanner from "../../components/PageBanner";
 import GalleryGrid from "../../components/GalleryGrid";
 
-export const metadata: Metadata = {
-  title: "Gallery | Centrifuge Manufacturing, Works Floor & Dispatch Photos",
-  description: "Photos of ADEN industrial centrifuges in production, on customer plant floors and ready for dispatch from our Naroda, Ahmedabad works.",
-  keywords: [
-    "Industrial Centrifuge Gallery",
-    "Centrifuge Manufacturing Plant Photos",
-    "Stainless Steel Centrifuge Pictures",
-    "Rubber-Lined Centrifuge Photos",
-    "ADEN Factory Ahmedabad",
-  ],
-  openGraph: {
-    title: "Gallery | ADEN Works, Ahmedabad",
-    description: "Centrifuges in production, on customer plant floors, and ready for dispatch from our Naroda, Ahmedabad works.",
-    url: "https://www.adengineers.co.in/gallery",
-  },
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Centrifuge Works & Dispatch Photo Gallery",
+  description: `Photos of ADEN centrifuges in production at our Naroda, Ahmedabad works, on customer plant floors, and packed for dispatch to customers in India, ${exportMarketsText}.`,
+  path: "/gallery",
+  image: photos.dispatchLoaded,
+  keywords: ["Centrifuge Gallery", "Centrifuge Manufacturing Plant Photos", "Stainless Steel Centrifuge Pictures", "Rubber-Lined Centrifuge Photos", "ADEN Factory Ahmedabad"],
+});
 
 const delay = (s: number) => ({ ["--d" as string]: `${s}s` });
 

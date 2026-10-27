@@ -1,24 +1,14 @@
 import type { Metadata } from "next";
+import { exportMarketsText, pageMetadata } from "../../lib/seo";
+import { photos } from "../../lib/site";
 
-export const metadata: Metadata = {
-  title: "Contact ADEN | Centrifuge Inquiry & 24/7 Technical Support",
-  description: "Get in touch with ADEN's engineering team in Ahmedabad, India for solid-liquid separation centrifuge sizing, custom equipment quotations, and 365-day technical support.",
-  keywords: [
-    "Contact ADEN",
-    "Centrifuge Quotation India",
-    "Solid-Liquid Separation Inquiry",
-    "Manual Top Discharge Centrifuge Price",
-    "Bag-Lifting Centrifuge Cost",
-    "ADEN Naroda Ahmedabad Address",
-    "Chemical Equipment Inquiry",
-    "Centrifuge Manufacturer Contact"
-  ],
-  openGraph: {
-    title: "Contact ADEN | Centrifuge Inquiry & 24/7 Technical Support",
-    description: "Reachable around the clock, 365 days a year, for process, mechanical, electrical and control-system questions.",
-    url: "https://www.adengineers.co.in/contact",
-  }
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Contact Us | Centrifuge Enquiry & Quotation",
+  description: `Contact ADEN (AD Engineers) in Ahmedabad, India for centrifuge sizing and quotations. We supply customers in India, ${exportMarketsText}, with 24/7 breakdown support.`,
+  path: "/contact",
+  image: photos.entrance,
+  keywords: ["Contact ADEN", "Centrifuge Quotation", "Centrifuge Price", "Bag-Lifting Centrifuge Cost", "ADEN Naroda Ahmedabad Address", "Centrifuge Manufacturer Contact"],
+});
 
 export default function ContactLayout({
   children,
