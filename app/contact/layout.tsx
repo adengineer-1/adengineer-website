@@ -4,7 +4,7 @@ import { photos } from "../../lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact Us | Centrifuge Enquiry & Quotation",
-  description: `Contact ADEN (AD Engineers) in Ahmedabad, India for centrifuge sizing and quotations. We supply customers in India, ${exportMarketsText}, with 24/7 breakdown support.`,
+  description: `Contact ADEN (AD Engineers) in Ahmedabad, India for centrifuge sizing and quotations. We supply customers in India, ${exportMarketsText}, with breakdown support, spares and commissioning.`,
   path: "/contact",
   image: photos.entrance,
   keywords: ["Contact ADEN", "Centrifuge Quotation", "Centrifuge Price", "Bag-Lifting Centrifuge Cost", "ADEN Naroda Ahmedabad Address", "Centrifuge Manufacturer Contact"],

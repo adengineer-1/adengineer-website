@@ -3,7 +3,7 @@ import { galleryPhotos, galleryVideos, photos, products } from "../lib/site";
 import { exportMarketsText, siteUrl } from "../lib/seo";
 
 // Bump this when page content changes so search engines know to recrawl.
-const lastModified = "2026-10-27";
+const lastModified = "2026-11-17";
 
 const abs = (path: string) => `${siteUrl}${path}`;
 const productImages = products.flatMap((product) => product.images.map((image) => image.src));
@@ -29,12 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         photos.plant.src,
         photos.dispatchLoaded.src,
         photos.lathe.src,
-        ...productImages,
-        photos.teamGroup.src,
-        photos.teamWorkshop.src,
+        photos.director.src,
+        photos.worksOverview.src,
+        photos.entrance.src,
         photos.ssFront.src,
-        photos.trailerSide.src,
         photos.dispatchSide.src,
+        ...productImages,
       ]),
       videos: videos.slice(0, 1),
     },
@@ -44,19 +44,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
       images: unique([photos.plant.src, ...productImages]),
-    },
-    {
-      url: abs("/company"),
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-      images: unique([
-        photos.teamWorkshop.src,
-        photos.director.src,
-        photos.lathe.src,
-        photos.worksOverview.src,
-        photos.entrance.src,
-      ]),
     },
     {
       url: abs("/gallery"),

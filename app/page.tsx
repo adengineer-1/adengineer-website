@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { exportMarketsText, pageMetadata } from "../lib/seo";
 import Image from "next/image";
 import Link from "next/link";
-import { clients, industries, photos, products } from "../lib/site";
+import { clients, countries, photos, products } from "../lib/site";
 import HeroSlider, { type HeroSlide } from "../components/HeroSlider";
 import VideoBanner from "../components/VideoBanner";
-import { ArrowRight, Gear, Truck, Wrench } from "../components/Icons";
+import { ArrowRight } from "../components/Icons";
 
 export const metadata: Metadata = pageMetadata({
   title: "ADEN | Centrifuge Manufacturer India, Exporter to Bangladesh, Africa & Gulf",
@@ -39,16 +39,52 @@ const slides: HeroSlide[] = [
     supertitle: "Designed and made in-house",
     title: "Machined, assembled and tested under one roof",
     text: "Fabrication, machining, assembly and run testing all happen at our own works, so quality stays in our hands.",
-    cta: { href: "/company", label: "About the company" },
+    cta: { href: "#about", label: "About the company" },
   },
 ];
 
-const features = [
-  { title: "Process first", text: "We study your product, batch size and media before recommending a machine." },
-  { title: "Built in-house", text: "Fabrication, machining and testing at our own works in Naroda GIDC." },
-  { title: "SS & rubber-lined", text: "Construction matched to the media, from pharma duty to acids and alkalis." },
-  { title: "24/7 service", text: "Breakdown support, spares and commissioning, long after delivery." },
+const principles = [
+  { title: "Engineer to the process", text: "Each machine is matched to the media, duty cycle and plant it will run in, not picked from a fixed size chart." },
+  { title: "Design for maintenance", text: "Service-friendly construction, large discharge openings and no dead zones keep downtime short." },
+  { title: "Stand behind every machine", text: "Breakdown support, spares and direct access to our engineers, long after commissioning." },
+  { title: "Build it ourselves", text: "Fabrication, machining, assembly and testing are all done at our own works in Naroda." },
 ];
+
+const team = [
+  { name: "Bharat M. Patel", role: "Managing Director" },
+  { name: "Kanu V. Patel", role: "Sales Engineer" },
+  { name: "Joysan Victor", role: "Chief Engineer" },
+  { name: "Hemchand", role: "Production Head" },
+  { name: "Raju Panchal", role: "Quality Control Head" },
+];
+
+const pages = [
+  {
+    href: "/products",
+    label: "Products",
+    title: "Our centrifuges",
+    text: "Manual and bag-lifting top discharge machines in stainless steel and rubber-lined construction.",
+    image: photos.ssFront,
+  },
+  {
+    href: "/gallery",
+    label: "Gallery",
+    title: "The works in pictures",
+    text: "Machines on the floor, the team, and shipments leaving Naroda.",
+    image: photos.dispatchLoaded,
+    position: "center 70%",
+  },
+  {
+    href: "/contact",
+    label: "Contact",
+    title: "Talk to the team",
+    text: "Send your product, batch size and media. We will recommend a machine and a quotation.",
+    image: photos.entrance,
+  },
+];
+
+const initials = (name: string) =>
+  name.split(" ").filter((part) => !part.endsWith(".")).map((part) => part[0]).slice(0, 2).join("");
 
 const delay = (s: number) => ({ ["--d" as string]: `${s}s` });
 
@@ -57,77 +93,113 @@ export default function Home() {
     <main>
       <HeroSlider slides={slides} />
 
-      {/* Feature band overlapping the hero */}
-      <div className="container feature-band">
-        <div className="grid">
-          {features.map((f, i) => (
-            <div key={f.title} className="item" data-anim="up" style={delay(0.1 * i)}>
-              <span className="num">0{i + 1}</span>
-              <h3>{f.title}</h3>
-              <p>{f.text}</p>
-              <Link href="/company" className="link-arrow" style={{ color: "#fff" }}>
-                <span className="sq"><ArrowRight size={14} /></span> Read more
+      <section className="section anniversary">
+        <div className="container anniv-grid">
+          <div className="anniv-badge" data-anim="zoom">
+            <span className="anniv-since">Since 1990</span>
+            <strong data-count="35">35</strong>
+            <span className="anniv-years">Years</span>
+            <span className="anniv-sub">of engineering excellence</span>
+          </div>
+          <div>
+            <span className="supertitle" data-anim="up">Our milestone</span>
+            <h2 data-anim="up" style={delay(0.1)}>Celebrating 35 Years of Engineering Excellence</h2>
+            <p className="lead" data-anim="up" style={delay(0.2)}>
+              Founded by <strong>Bharat M. Patel</strong> in 1990, ADEN has completed 35 years of delivering reliable
+              separation technology solutions to industries worldwide.
+            </p>
+            <p data-anim="up" style={delay(0.3)}>
+              Specializing in mechanical and thermal solid-liquid separation, we provide innovative centrifuges, backed
+              by decades of expertise and customer support.
+            </p>
+            <p data-anim="up" style={delay(0.4)}>
+              With over 3,500 units delivered across 5+ countries, we remain committed to quality, innovation, and
+              long-term customer partnerships.
+            </p>
+            <p className="anniv-tagline" data-anim="up" style={delay(0.5)}>
+              ADEN — 35 Years of Trust, Technology &amp; Reliability.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section light" id="about">
+        <div className="container about-intro">
+          <div className="has-outline">
+            <span className="outline-word" data-parallax="80" aria-hidden="true" style={{ top: -40, left: -20 }}>1990</span>
+            <span className="supertitle" data-anim="up">Our company</span>
+            <h2 data-anim="up" style={delay(0.1)}>Three decades of separation engineering</h2>
+            <p className="lead" data-anim="up" style={delay(0.2)}>
+              ADEN makes equipment for mechanical solid-liquid separation. Our main products are top discharge
+              centrifuges, manual and bag-lifting, in stainless steel and rubber-lined construction.
+            </p>
+            <p data-anim="up" style={delay(0.3)}>
+              Since 1990 we have supplied more than 3,500 centrifuges to customers in India and in more than 5
+              countries. A separation problem usually starts as a process question, so we look at the product, the media
+              and the batch cycle first and then recommend the machine. Our work continues through installation,
+              commissioning, spares and breakdown support.
+            </p>
+            <div data-anim="up" style={delay(0.4)}>
+              <Link href="/contact" className="btn-split">
+                <span className="ico"><ArrowRight size={20} /></span>
+                <span className="txt">Talk to our team</span>
               </Link>
+            </div>
+          </div>
+          <div className="imgs" data-anim="right">
+            <div className="ph main">
+              <Image src={photos.director.src} alt={photos.director.alt} fill sizes="(max-width: 960px) 90vw, 460px" />
+            </div>
+            <div className="badge"><strong>35+</strong>years of experience</div>
+          </div>
+        </div>
+      </section>
+
+      <div className="container feature-band flush">
+        <div className="grid">
+          {principles.map((item, i) => (
+            <div key={item.title} className="item" data-anim="up" style={delay(0.1 * i)}>
+              <span className="num">0{i + 1}</span>
+              <h3>{item.title}</h3>
+              <p style={{ margin: 0 }}>{item.text}</p>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Intro with statement */}
       <section className="section">
-        <div className="container intro">
-          <div className="left" data-anim="left">
-            <span className="supertitle">Who we are</span>
-            <h3>A.D. Engineers is always ready for new and challenging separation jobs</h3>
-            <Link href="/contact" className="btn-split">
-              <span className="ico"><ArrowRight size={20} /></span>
-              <span className="txt">Get a quote</span>
-            </Link>
-          </div>
-          <div className="right" data-anim="right">
-            <span className="quote-mark" aria-hidden="true">&ldquo;</span>
-            <p>
-              For more than three decades we have built centrifuges for manufacturers who depend on them every shift.
-              We start from the process, build the machine in our own works, and stay with the customer long after
-              commissioning.
+        <div className="container">
+          <div className="sec-title">
+            <span className="outline-word" aria-hidden="true">PAGES</span>
+            <span className="supertitle" data-anim="up">Where to go next</span>
+            <h2 data-anim="up" style={delay(0.1)}>Products, gallery and contact</h2>
+            <p data-anim="up" style={delay(0.2)}>
+              The company story lives here. These are the pages for machines, photographs and enquiries.
             </p>
-            <div className="sign">A.D. Engineers<small>G.I.D.C. Naroda, Ahmedabad</small></div>
+          </div>
+          <div className="key-pages">
+            {pages.map((page, i) => (
+              <Link key={page.href} href={page.href} className="key-page" data-anim="up" style={delay(0.1 * i)}>
+                <Image
+                  src={page.image.src}
+                  alt={page.image.alt}
+                  fill
+                  sizes="(max-width: 800px) 100vw, 33vw"
+                  style={{ objectPosition: page.position }}
+                />
+                <span className="key-body">
+                  <span className="key-label">{page.label}</span>
+                  <span className="key-title">{page.title}</span>
+                  <span className="key-text">{page.text}</span>
+                  <span className="key-more">Open page <ArrowRight size={16} /></span>
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* About split with bleeding photo */}
-      <section className="split" style={{ background: "var(--light)" }}>
-        <div className="photo ph" data-anim="reveal">
-          <Image src={photos.teamGroup.src} alt={photos.teamGroup.alt} fill sizes="(max-width: 960px) 100vw, 50vw" />
-          <div className="strip"><b>35+</b> years of separation engineering</div>
-        </div>
-        <div className="copy has-outline">
-          <span className="outline-word" data-parallax="100" aria-hidden="true">ADEN</span>
-          <span className="supertitle" data-anim="up">About the company</span>
-          <h2 data-anim="up" style={delay(0.1)}>Engineering the right separation</h2>
-          <p data-anim="up" style={delay(0.2)}>
-            Since 1990, A.D. Engineers has supplied more than 3,500 centrifuges to customers in India and over
-            5 countries. Our machines are specified into pharmaceutical, chemical, dye, textile and food plants that
-            run shift after shift.
-          </p>
-          <ul className="ticks" data-anim="up" style={delay(0.3)}>
-            <li>Service-friendly design</li>
-            <li>Large single discharge opening</li>
-            <li>Minimal product hold-up</li>
-            <li>Three-point suspension</li>
-          </ul>
-          <div data-anim="up" style={delay(0.4)}>
-            <Link href="/company" className="btn-split alt">
-              <span className="ico"><ArrowRight size={20} /></span>
-              <span className="txt">More about us</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Products */}
-      <section className="section" style={{ paddingBottom: 0 }}>
+      <section className="section" style={{ paddingTop: 0, paddingBottom: 0 }}>
         <div className="container">
           <div className="sec-title">
             <span className="outline-word" aria-hidden="true">PRODUCTS</span>
@@ -154,86 +226,69 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Clients */}
-      <div className="clients">
-        <div className="container row">
-          {clients.slice(0, 12).map((name, i) => (
-            <span key={name} data-anim="up" style={delay(0.04 * i)}>{name}</span>
-          ))}
-        </div>
-      </div>
-
-      {/* Why us + counters */}
-      <section className="split reverse" style={{ position: "relative" }}>
-        <div className="photo ph" data-anim="reveal">
-          <Image src={photos.lathe.src} alt={photos.lathe.alt} fill sizes="(max-width: 960px) 100vw, 50vw" />
-        </div>
-        <div className="copy" style={{ position: "relative", paddingBottom: 160 }}>
-          <span className="side-block" aria-hidden="true" />
-          <span className="supertitle" data-anim="up">Industries we serve</span>
-          <h2 data-anim="up" style={delay(0.1)}>A reliable partner for process plants</h2>
-          <p data-anim="up" style={delay(0.2)}>
-            Construction is chosen to suit the media: stainless steel for pharma and food duty, rubber lining for acidic
-            and alkaline products.
-          </p>
-          <ul className="ticks" data-anim="up" style={delay(0.3)}>
-            {industries.map((item) => <li key={item}>{item}</li>)}
-          </ul>
+      <section className="section">
+        <div className="container">
+          <div className="sec-title">
+            <span className="outline-word" aria-hidden="true">TEAM</span>
+            <span className="supertitle" data-anim="up">Our people</span>
+            <h2 data-anim="up" style={delay(0.1)}>The team behind the machines</h2>
+            <p data-anim="up" style={delay(0.2)}>Design, sales engineering, production and quality control, all on one site.</p>
+          </div>
+          <div className="team">
+            {team.map((person, i) => (
+              <div key={person.name} className="member" style={{ background: "var(--light)", ...delay(0.08 * i) }} data-anim="up">
+                <div className="initials">{initials(person.name)}</div>
+                <h3>{person.name}</h3>
+                <p>{person.role}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <div className="container counters-wrap">
-        <div className="counters">
-          <div className="highlight">
-            <span className="hl-tag">Since 1990</span>
-            <strong data-count="35" data-suffix="+">35+</strong>
-            <span className="bar" />
-            <h4>Years of experience</h4>
-            <p>Making centrifuges in Ahmedabad</p>
+      <section className="section light">
+        <div className="container">
+          <div className="sec-title">
+            <span className="supertitle" data-anim="up">The works</span>
+            <h2 data-anim="up" style={delay(0.1)}>Plot 329, G.I.D.C. Naroda</h2>
           </div>
-          <div>
-            <strong data-count="3500" data-suffix="+">3,500+</strong>
-            <span className="bar" />
-            <h4>Machines</h4>
-            <p>Centrifuges supplied</p>
-          </div>
-          <div>
-            <strong data-count="5" data-suffix="+">5+</strong>
-            <span className="bar" />
-            <h4>Countries</h4>
-            <p>Export markets served</p>
-          </div>
-          <div>
-            <strong>24/7</strong>
-            <span className="bar" />
-            <h4>Service</h4>
-            <p>Breakdown support line</p>
+          <div className="photo-trio">
+            <figure data-anim="up">
+              <div className="ph zoom-hover"><Image src={photos.lathe.src} alt={photos.lathe.alt} fill sizes="(max-width: 800px) 100vw, 600px" /></div>
+              <figcaption>Machine shop</figcaption>
+            </figure>
+            <figure data-anim="up" style={delay(0.15)}>
+              <div className="ph zoom-hover"><Image src={photos.worksOverview.src} alt={photos.worksOverview.alt} fill sizes="(max-width: 800px) 50vw, 300px" /></div>
+              <figcaption>Main shed</figcaption>
+            </figure>
+            <figure data-anim="up" style={delay(0.3)}>
+              <div className="ph zoom-hover"><Image src={photos.entrance.src} alt={photos.entrance.alt} fill sizes="(max-width: 800px) 50vw, 300px" /></div>
+              <figcaption>Works entrance</figcaption>
+            </figure>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Heritage */}
-      <section className="section">
-        <div className="container heritage">
-          <div className="ph zoom-hover" data-anim="reveal">
-            <Image src={photos.teamWorkshop.src} alt={photos.teamWorkshop.alt} fill sizes="(max-width: 960px) 100vw, 420px" />
-          </div>
-          <div data-anim="up" style={delay(0.1)}>
-            <h3>Proud of our works</h3>
-            <p>
-              Our team of engineers, fabricators and machinists has built centrifuges together for decades. Every machine
-              is assembled and run-tested before it leaves Naroda.
+      <section className="section on-dark" style={{ overflow: "hidden" }}>
+        <div className="container two-col">
+          <div className="has-outline">
+            <span className="outline-word" data-parallax="80" aria-hidden="true" style={{ top: -60, left: -20 }}>GLOBAL</span>
+            <span className="supertitle" data-anim="up">Export markets</span>
+            <h2 data-anim="up" style={delay(0.1)}>Running in plants across 5+ countries</h2>
+            <p data-anim="up" style={delay(0.15)}>
+              From Ahmedabad we supply centrifuges to customers across India and export to Bangladesh, African countries
+              and the Gulf countries, with support for installation, spares and service.
             </p>
+            <div className="chips" data-anim="up" style={delay(0.2)}>
+              {countries.map((country) => <span key={country}>{country}</span>)}
+            </div>
           </div>
-          <div data-anim="up" style={delay(0.2)}>
-            <p>
-              We welcome customer visits to see machines in build. Tell us your product, batch size and media and we will
-              recommend a suitable model with a quotation.
-            </p>
-            <Link href="/contact" className="btn-split">
-              <span className="ico"><ArrowRight size={20} /></span>
-              <span className="txt">Contact us</span>
-            </Link>
+          <div>
+            <span className="supertitle" data-anim="up">Customers</span>
+            <h2 data-anim="up" style={delay(0.1)}>Some of the plants we supply</h2>
+            <div className="chips" data-anim="up" style={delay(0.2)}>
+              {clients.map((client) => <span key={client}>{client}</span>)}
+            </div>
           </div>
         </div>
       </section>
@@ -246,57 +301,14 @@ export default function Home() {
         title="See our centrifuges in action"
       />
 
-      {/* Mosaic */}
-      <section className="section" style={{ overflow: "hidden" }}>
-        <div className="container mosaic-wrap">
-          <div className="mosaic">
-            <div className="ph zoom-hover" data-anim="zoom">
-              <Image src={photos.ssFront.src} alt={photos.ssFront.alt} fill sizes="(max-width: 960px) 50vw, 330px" />
-            </div>
-            <div className="mtile red" data-anim="zoom" style={delay(0.1)}>
-              <Gear size={44} strokeWidth={1.4} />
-              <h3>Engineered</h3>
-              <p>Basket, drive and discharge specified for your process.</p>
-            </div>
-            <div className="mtile navy" data-anim="zoom" style={delay(0.2)}>
-              <Wrench size={44} strokeWidth={1.4} />
-              <h3>Serviced</h3>
-              <p>Spares and breakdown support around the clock.</p>
-            </div>
-            <div className="ph zoom-hover" data-anim="zoom" style={delay(0.3)}>
-              <Image src={photos.trailerSide.src} alt={photos.trailerSide.alt} fill sizes="(max-width: 960px) 50vw, 330px" />
-            </div>
-          </div>
-          <div className="mosaic-copy has-outline">
-            <span className="outline-word" data-parallax="-80" aria-hidden="true">WORKS</span>
-            <span className="supertitle" data-anim="up">Inside A.D. Engineers</span>
-            <h2 data-anim="up" style={delay(0.1)}>Machines made in Naroda</h2>
-            <p data-anim="up" style={delay(0.2)}>
-              From fabrication of baskets and casings to final assembly and dispatch, every step happens at our works.
-              Stainless steel machines for clean processes, rubber-lined machines for corrosive duty.
-            </p>
-            <div data-anim="up" style={delay(0.3)}>
-              <Link href="/gallery" className="link-arrow">
-                <span className="sq"><ArrowRight size={14} /></span> View the photo gallery
-              </Link>
-            </div>
-            <div className="mtile light" data-anim="up" style={{ ...delay(0.4), marginTop: 40, minHeight: 0 }}>
-              <Truck size={40} strokeWidth={1.4} />
-              <h3>Ready for dispatch</h3>
-              <p>Machines are packed at the works and shipped across India and overseas.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="cta-strip">
+      <section className="cta-strip" style={{ background: "var(--navy)" }}>
         <div className="container">
           <div data-anim="left">
             <h2>Have a separation requirement?</h2>
             <p>Send us your product, batch size and media details. We will suggest a suitable machine with a quotation.</p>
           </div>
           <div data-anim="right">
-            <Link href="/contact" className="btn-split">
+            <Link href="/contact" className="btn-split alt">
               <span className="ico"><ArrowRight size={20} /></span>
               <span className="txt">Send an enquiry</span>
             </Link>

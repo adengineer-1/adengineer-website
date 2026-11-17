@@ -90,7 +90,7 @@ export default function Contact() {
             <p>Please include the product, batch size and media if you can. It helps us recommend the right machine faster.</p>
             <dl>
               <div><dt>Working hours</dt><dd>Monday to Saturday</dd></div>
-              <div><dt>Breakdown service</dt><dd>24 hours on {contact.phone}</dd></div>
+              <div><dt>Breakdown service</dt><dd>Call {contact.phone}</dd></div>
               <div><dt>Response</dt><dd>Within one working day</dd></div>
             </dl>
           </div>

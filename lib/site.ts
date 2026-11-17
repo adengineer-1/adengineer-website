@@ -11,7 +11,6 @@ export const contact = {
 
 export const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/company", label: "About" },
   { href: "/products", label: "Products" },
   { href: "/gallery", label: "Gallery" },
 ];
@@ -232,5 +231,5 @@ export const stats = [
   { value: "1990", label: "Established" },
   { value: "3,500+", label: "Centrifuges supplied" },
   { value: "5+", label: "Export countries" },
-  { value: "24/7", label: "Breakdown service" },
+  { value: "In-house", label: "Design and build" },
 ];
