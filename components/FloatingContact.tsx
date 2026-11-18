@@ -25,6 +25,10 @@ export default function FloatingContact() {
       >
         <WhatsApp size={26} />
       </a>
+      <div className="exp-badge" role="note" aria-label="35+ years of experience">
+        <strong>35<sup>+</sup></strong>
+        <span>Years of<br />experience</span>
+      </div>
       <button
         type="button"
         className={`to-top ${showTop ? "show" : ""}`}

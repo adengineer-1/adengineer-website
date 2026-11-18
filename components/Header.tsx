@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { contact, navLinks } from "../lib/site";
-import { ArrowRight, Close, Mail, MapPin, Menu, Phone } from "./Icons";
+import { Close, Mail, MapPin, Menu, Phone } from "./Icons";
 
 const links = [...navLinks, { href: "/contact", label: "Contact" }];
 
@@ -75,9 +75,6 @@ export default function Header() {
               ))}
             </ul>
           </nav>
-          <Link href="/contact" className="nav-cta">
-            Get a quote <ArrowRight size={16} />
-          </Link>
         </div>
       </div>
 
