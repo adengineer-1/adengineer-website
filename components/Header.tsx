@@ -27,10 +27,16 @@ export default function Header() {
   }, [isOpen]);
 
   const brand = (
-    <Link href="/" className="brand" aria-label="ADEN, A.D. Engineers home">
-      <img src="/brand/logo.png" alt="ADEN" width={102} height={34} />
-      <span>A.D. Engineers</span>
-    </Link>
+    <div className="brand-wrap">
+      <Link href="/" className="brand" aria-label="ADEN, A.D. Engineers home">
+        <img src="/brand/logo.png" alt="ADEN" width={102} height={34} />
+        <span>A.D. Engineers</span>
+      </Link>
+      <div className="exp-badge" role="note" aria-label="35+ years of experience">
+        <strong>35<sup>+</sup></strong>
+        <span>Years of<br />experience</span>
+      </div>
+    </div>
   );
 
   return (

@@ -448,7 +448,7 @@ p {
   height: var(--nav-h);
 }
 
-.hdr-nav .brand {
+.hdr-nav .brand-wrap {
   display: none;
 }
 
@@ -526,7 +526,7 @@ p {
   border-color: transparent;
 }
 
-.site-header.scrolled .hdr-nav .brand {
+.site-header.scrolled .hdr-nav .brand-wrap {
   display: flex;
 }
 
@@ -549,10 +549,17 @@ p {
   display: none;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1320px) {
   .hdr-contacts .hc-visit {
     display: none;
   }
+}
+
+/* Keep the logo label and contact details on one line next to the badge. */
+.brand span,
+.hdr-contacts small,
+.hdr-contacts span {
+  white-space: nowrap;
 }
 
 @media (max-width: 960px) {
@@ -3057,76 +3064,81 @@ figure {
   transform: scale(1.08);
 }
 
-/* Small "35+ years" badge pinned bottom-right; the back-to-top button stacks above it. */
-.exp-badge {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 90;
+/* "35+ years" badge beside the logo in the header, so it's always in view. */
+.brand-wrap {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 9px 16px 9px 14px;
+  gap: 18px;
+  flex-shrink: 0;
+}
+
+.brand-wrap>* {
+  flex-shrink: 0;
+}
+
+.exp-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px 6px 10px;
   background: linear-gradient(150deg, var(--red) 0%, var(--red-dark) 100%);
   color: var(--white);
-  box-shadow: 0 10px 24px -8px rgba(166, 44, 37, .6);
-  border-left: 4px solid var(--navy);
-  pointer-events: none;
-  animation: badge-in .7s var(--ease) 1.2s both;
+  border-left: 3px solid var(--white);
+  box-shadow: 0 8px 18px -8px rgba(166, 44, 37, .7);
+  white-space: nowrap;
+}
+
+.site-header.scrolled .exp-badge {
+  border-left-color: var(--navy);
 }
 
 .exp-badge strong {
   font-family: var(--font-head);
   font-weight: 800;
-  font-size: 28px;
+  font-size: 22px;
   line-height: 1;
   letter-spacing: -.02em;
 }
 
 .exp-badge sup {
-  font-size: 15px;
+  font-size: 12px;
   vertical-align: top;
   position: relative;
-  top: -2px;
+  top: -1px;
 }
 
 .exp-badge span {
   font-family: var(--font-head);
   font-weight: 700;
-  font-size: 11px;
+  font-size: 10px;
   line-height: 1.2;
-  letter-spacing: .06em;
+  letter-spacing: .07em;
   text-transform: uppercase;
 }
 
-@keyframes badge-in {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-}
-
 @media (max-width: 560px) {
+  .brand-wrap {
+    gap: 12px;
+  }
+
   .exp-badge {
-    right: 12px;
-    bottom: 12px;
-    padding: 7px 12px 7px 10px;
-    gap: 8px;
+    padding: 5px 9px 5px 8px;
+    gap: 6px;
   }
 
   .exp-badge strong {
-    font-size: 22px;
+    font-size: 18px;
   }
 
   .exp-badge span {
-    font-size: 9.5px;
+    font-size: 8.5px;
   }
 }
 
 .to-top {
   position: fixed;
   right: 18px;
-  bottom: 84px;
+  bottom: 18px;
   z-index: 90;
   width: 54px;
   height: 54px;
