@@ -2,7 +2,24 @@ import type { Metadata } from "next";
 import { exportMarketsText, pageMetadata } from "../lib/seo";
 import Image from "next/image";
 import Link from "next/link";
-import { clients, countries, photos, products } from "../lib/site";
+import { photos, products } from "../lib/site";
+
+const clientLogos: { name: string; logo: string | null }[] = [
+  { name: "Bodal Chemicals", logo: "/images/clients/bodal-chemicals.png" },
+  { name: "Meghmani Organics", logo: "/images/clients/meghmani-organics.jpg" },
+  { name: "Valiant Organics", logo: "/images/clients/valiant-organics.png" },
+  { name: "Sagar Drugs & Pharma", logo: null },
+  { name: "R K Synthesis", logo: "/images/clients/rk-synthesis.png" },
+  { name: "Chemie Organic Chemicals", logo: null },
+  { name: "Gopinath Chem Tech", logo: null },
+  { name: "K.P. International", logo: "/images/clients/kp-international.png" },
+  { name: "Matangi Industries", logo: null },
+  { name: "Prima Chemicals", logo: "/images/clients/prima-chemicals.png" },
+  { name: "Varahi Intermediates", logo: "/images/clients/varahi-intermediates.png" },
+  { name: "Himalaya Chemicals", logo: null },
+  { name: "J J Nitro Products", logo: "/images/clients/jj-nitro-products.png" },
+  { name: "U.C. Colour Chem", logo: null },
+];
 import HeroSlider, { type HeroSlide } from "../components/HeroSlider";
 import VideoBanner from "../components/VideoBanner";
 import { ArrowRight } from "../components/Icons";
@@ -29,13 +46,12 @@ const slides: HeroSlide[] = [
     alt: photos.dispatchLoaded.alt,
     position: "center 70%",
     supertitle: "3,500+ machines supplied",
-    title: "Delivered to plants in 5+ countries",
     text: "Every machine is packed and dispatched from our Naroda works to plants across India, Bangladesh, African countries and the Gulf.",
     cta: { href: "/gallery", label: "See the works" },
   },
   {
-    image: photos.lathe.src,
-    alt: photos.lathe.alt,
+    image: "/images/products/bag-lifting-rl.png",
+    alt: "Rubber-lined bag-lifting centrifuges on the works floor",
     supertitle: "Designed and made in-house",
     title: "Machined, assembled and tested under one roof",
     text: "Fabrication, machining, assembly and run testing all happen at our own works, so quality stays in our hands.",
@@ -48,14 +64,6 @@ const principles = [
   { title: "Design for maintenance", text: "Service-friendly construction, large discharge openings and no dead zones keep downtime short." },
   { title: "Stand behind every machine", text: "Breakdown support, spares and direct access to our engineers, long after commissioning." },
   { title: "Build it ourselves", text: "Fabrication, machining, assembly and testing are all done at our own works in Naroda." },
-];
-
-const team = [
-  { name: "Bharat M. Patel", role: "Managing Director" },
-  { name: "Kanu V. Patel", role: "Sales Engineer" },
-  { name: "Joysan Victor", role: "Chief Engineer" },
-  { name: "Hemchand", role: "Production Head" },
-  { name: "Raju Panchal", role: "Quality Control Head" },
 ];
 
 const pages = [
@@ -83,9 +91,6 @@ const pages = [
   },
 ];
 
-const initials = (name: string) =>
-  name.split(" ").filter((part) => !part.endsWith(".")).map((part) => part[0]).slice(0, 2).join("");
-
 const delay = (s: number) => ({ ["--d" as string]: `${s}s` });
 
 export default function Home() {
@@ -93,51 +98,27 @@ export default function Home() {
     <main>
       <HeroSlider slides={slides} />
 
-      <section className="section anniversary">
-        <div className="container anniv-grid">
-          <div className="anniv-badge" data-anim="zoom">
-            <span className="anniv-since">Since 1990</span>
-            <strong data-count="35">35</strong>
-            <span className="anniv-years">Years</span>
-            <span className="anniv-sub">of engineering excellence</span>
-          </div>
-          <div>
-            <span className="supertitle" data-anim="up">Our milestone</span>
-            <h2 data-anim="up" style={delay(0.1)}>Celebrating 35 Years of Engineering Excellence</h2>
-            <p className="lead" data-anim="up" style={delay(0.2)}>
-              Founded by <strong>Bharat M. Patel</strong> in 1990, ADEN has completed 35 years of delivering reliable
-              separation technology solutions to industries worldwide.
-            </p>
-            <p data-anim="up" style={delay(0.3)}>
-              Specializing in mechanical and thermal solid-liquid separation, we provide innovative centrifuges, backed
-              by decades of expertise and customer support.
-            </p>
-            <p data-anim="up" style={delay(0.4)}>
-              With over 3,500 units delivered across 5+ countries, we remain committed to quality, innovation, and
-              long-term customer partnerships.
-            </p>
-            <p className="anniv-tagline" data-anim="up" style={delay(0.5)}>
-              ADEN — 35 Years of Trust, Technology &amp; Reliability.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section className="section light" id="about">
         <div className="container about-intro">
           <div className="has-outline">
             <span className="outline-word" data-parallax="80" aria-hidden="true" style={{ top: -40, left: -20 }}>1990</span>
-            <span className="supertitle" data-anim="up">Our company</span>
-            <h2 data-anim="up" style={delay(0.1)}>Three decades of separation engineering</h2>
+            <span className="supertitle" data-anim="up">35-Year Milestone &bull; Our Company</span>
+            <h2 data-anim="up" style={delay(0.1)}>Celebrating 35 Years of Engineering Excellence</h2>
             <p className="lead" data-anim="up" style={delay(0.2)}>
-              ADEN makes equipment for mechanical solid-liquid separation. Our main products are top discharge
-              centrifuges, manual and bag-lifting, in stainless steel and rubber-lined construction.
+              Founded by <strong>Bharat M. Patel</strong> in 1990 at Naroda GIDC, Ahmedabad, ADEN has completed 35 years of
+              delivering trusted solid-liquid separation solutions to process industries worldwide.
+            </p>
+            <p data-anim="up" style={delay(0.25)}>
+              Specializing in mechanical solid-liquid separation, we manufacture manual and bag-lifting top discharge centrifuges
+              in corrosion-resistant stainless steel and rubber-lined (MSRL) construction. A separation problem usually begins as a
+              process question, so we analyze the media, slurry properties, and batch duty first to engineer the ideal machine.
             </p>
             <p data-anim="up" style={delay(0.3)}>
-              Since 1990 we have supplied more than 3,500 centrifuges to customers in India and in more than 5
-              countries. A separation problem usually starts as a process question, so we look at the product, the media
-              and the batch cycle first and then recommend the machine. Our work continues through installation,
-              commissioning, spares and breakdown support.
+              With over 3,500 machines supplied to chemical and pharmaceutical plants across India and exported to 5+ countries,
+              our engineering commitment stands behind every unit through installation, commissioning, genuine spares, and breakdown support.
+            </p>
+            <p className="anniv-tagline" data-anim="up" style={{ ...delay(0.35), marginTop: 24, marginBottom: 28, background: "var(--white)" }}>
+              ADEN — 35 Years of Trust, Technology &amp; Reliability.
             </p>
             <div data-anim="up" style={delay(0.4)}>
               <Link href="/contact" className="btn-split">
@@ -150,7 +131,12 @@ export default function Home() {
             <div className="ph main">
               <Image src={photos.director.src} alt={photos.director.alt} fill sizes="(max-width: 960px) 90vw, 460px" />
             </div>
-            <div className="badge"><strong>35+</strong>years of experience</div>
+            <div className="badge">
+              <span style={{ display: "block", fontSize: 13, textTransform: "uppercase", letterSpacing: ".12em", opacity: 0.9, marginBottom: 6, fontWeight: 700 }}>Since 1990</span>
+              <strong data-count="35">35</strong>
+              <span style={{ display: "block", fontSize: 20, fontWeight: 800, lineHeight: 1.15, marginTop: 4 }}>Years</span>
+              <span style={{ display: "block", fontSize: 14, opacity: 0.9, marginTop: 4 }}>of engineering excellence</span>
+            </div>
           </div>
         </div>
       </section>
@@ -226,26 +212,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
-          <div className="sec-title">
-            <span className="outline-word" aria-hidden="true">TEAM</span>
-            <span className="supertitle" data-anim="up">Our people</span>
-            <h2 data-anim="up" style={delay(0.1)}>The team behind the machines</h2>
-            <p data-anim="up" style={delay(0.2)}>Design, sales engineering, production and quality control, all on one site.</p>
-          </div>
-          <div className="team">
-            {team.map((person, i) => (
-              <div key={person.name} className="member" style={{ background: "var(--light)", ...delay(0.08 * i) }} data-anim="up">
-                <div className="initials">{initials(person.name)}</div>
-                <h3>{person.name}</h3>
-                <p>{person.role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="section light">
         <div className="container">
           <div className="sec-title">
@@ -270,25 +236,33 @@ export default function Home() {
       </section>
 
       <section className="section on-dark" style={{ overflow: "hidden" }}>
-        <div className="container two-col">
-          <div className="has-outline">
-            <span className="outline-word" data-parallax="80" aria-hidden="true" style={{ top: -60, left: -20 }}>GLOBAL</span>
-            <span className="supertitle" data-anim="up">Export markets</span>
-            <h2 data-anim="up" style={delay(0.1)}>Running in plants across 5+ countries</h2>
-            <p data-anim="up" style={delay(0.15)}>
-              From Ahmedabad we supply centrifuges to customers across India and export to Bangladesh, African countries
-              and the Gulf countries, with support for installation, spares and service.
-            </p>
-            <div className="chips" data-anim="up" style={delay(0.2)}>
-              {countries.map((country) => <span key={country}>{country}</span>)}
-            </div>
-          </div>
-          <div>
+        <div className="container">
+          <div className="sec-title">
+            <span className="outline-word" aria-hidden="true">CLIENTS</span>
             <span className="supertitle" data-anim="up">Customers</span>
             <h2 data-anim="up" style={delay(0.1)}>Some of the plants we supply</h2>
-            <div className="chips" data-anim="up" style={delay(0.2)}>
-              {clients.map((client) => <span key={client}>{client}</span>)}
-            </div>
+            <p data-anim="up" style={delay(0.15)}>
+              Our centrifuges run in chemical, pharmaceutical and bulk drug manufacturing plants across India.
+            </p>
+          </div>
+          <div className="client-logo-grid" data-anim="up" style={delay(0.2)}>
+            {clientLogos.map((c, i) =>
+              c.logo ? (
+                <div key={c.name} className="client-logo-card" data-anim="up" style={delay(0.05 * i)}>
+                  <Image
+                    src={c.logo}
+                    alt={c.name}
+                    width={160}
+                    height={60}
+                    style={{ objectFit: "contain", maxHeight: 60, width: "auto", maxWidth: "100%" }}
+                  />
+                </div>
+              ) : (
+                <div key={c.name} className="client-logo-card client-logo-card--text" data-anim="up" style={delay(0.05 * i)}>
+                  <span className="client-text-logo">{c.name}</span>
+                </div>
+              )
+            )}
           </div>
         </div>
       </section>

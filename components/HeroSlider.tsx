@@ -10,7 +10,7 @@ export type HeroSlide = {
   alt: string;
   position?: string;
   supertitle: string;
-  title: string;
+  title?: string;
   text: string;
   cta: { href: string; label: string };
 };
@@ -52,7 +52,7 @@ export default function HeroSlider({ slides }: { slides: HeroSlide[] }) {
           </div>
           <div className="container hero-content">
             <span className="supertitle light">{slide.supertitle}</span>
-            {i === 0 ? <h1>{slide.title}</h1> : <h2 style={{ fontSize: "clamp(42px, 6vw, 78px)" }}>{slide.title}</h2>}
+            {slide.title && (i === 0 ? <h1>{slide.title}</h1> : <h2 style={{ fontSize: "clamp(42px, 6vw, 78px)" }}>{slide.title}</h2>)}
             <p>{slide.text}</p>
             <div>
               <Link href={slide.cta.href} className="btn-split" tabIndex={i === active ? 0 : -1}>
