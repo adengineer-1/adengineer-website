@@ -1997,12 +1997,18 @@ p {
 }
 
 /* ---------- Client logo grid ---------- */
+/* Flex (not grid) so a short last row sits centred instead of hugging the left. */
 .client-logo-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
   max-width: 1100px;
   margin: 0 auto;
+}
+
+.client-logo-grid>* {
+  flex: 0 0 calc((100% - 4 * 20px) / 5);
 }
 
 .client-logo-card {
@@ -2012,8 +2018,13 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 80px;
+  min-height: 104px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.client-logo-card--dark {
+  background: var(--navy-2);
+  border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .client-logo-card:hover {
@@ -2037,14 +2048,23 @@ p {
 }
 
 @media (max-width: 900px) {
-  .client-logo-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .client-logo-grid>* {
+    flex-basis: calc((100% - 2 * 20px) / 3);
   }
 }
 
 @media (max-width: 600px) {
   .client-logo-grid {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .client-logo-grid>* {
+    flex-basis: calc((100% - 12px) / 2);
+  }
+
+  .client-logo-card {
+    min-height: 88px;
+    padding: 14px;
   }
 }
 /* --------------------------------------- */

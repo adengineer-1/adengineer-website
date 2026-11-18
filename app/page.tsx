@@ -4,21 +4,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { photos, products } from "../lib/site";
 
-const clientLogos: { name: string; logo: string | null }[] = [
+// `dark` puts white/light logos on a navy card so they stay visible.
+const clientLogos: { name: string; logo: string | null; dark?: boolean }[] = [
   { name: "Bodal Chemicals", logo: "/images/clients/bodal-chemicals.png" },
   { name: "Meghmani Organics", logo: "/images/clients/meghmani-organics.jpg" },
   { name: "Valiant Organics", logo: "/images/clients/valiant-organics.png" },
   { name: "Sagar Drugs & Pharma", logo: null },
   { name: "R K Synthesis", logo: "/images/clients/rk-synthesis.png" },
-  { name: "Chemie Organic Chemicals", logo: null },
-  { name: "Gopinath Chem Tech", logo: null },
+  { name: "Chemie Organic Chemicals", logo: "/images/clients/chemie-organic-chemicals.jpg" },
+  { name: "Gopinath Chem Tech", logo: "/images/clients/gopinath-chem-tech.png", dark: true },
   { name: "K.P. International", logo: "/images/clients/kp-international.png" },
-  { name: "Matangi Industries", logo: null },
+  { name: "Matangi Industries", logo: "/images/clients/matangi-industries.png" },
   { name: "Prima Chemicals", logo: "/images/clients/prima-chemicals.png" },
   { name: "Varahi Intermediates", logo: "/images/clients/varahi-intermediates.png" },
-  { name: "Himalaya Chemicals", logo: null },
+  { name: "Himalaya Chemicals", logo: "/images/clients/himalaya-chemicals.jpg" },
   { name: "J J Nitro Products", logo: "/images/clients/jj-nitro-products.png" },
-  { name: "U.C. Colour Chem", logo: null },
+  { name: "U.C. Colour Chem", logo: "/images/clients/uc-colour-chem.png", dark: true },
 ];
 import HeroSlider, { type HeroSlide } from "../components/HeroSlider";
 import VideoBanner from "../components/VideoBanner";
@@ -248,13 +249,14 @@ export default function Home() {
           <div className="client-logo-grid" data-anim="up" style={delay(0.2)}>
             {clientLogos.map((c, i) =>
               c.logo ? (
-                <div key={c.name} className="client-logo-card" data-anim="up" style={delay(0.05 * i)}>
+                <div key={c.name} className={`client-logo-card ${c.dark ? "client-logo-card--dark" : ""}`} data-anim="up" style={delay(0.05 * i)} title={c.name}>
                   <Image
                     src={c.logo}
                     alt={c.name}
-                    width={160}
-                    height={60}
-                    style={{ objectFit: "contain", maxHeight: 60, width: "auto", maxWidth: "100%" }}
+                    width={180}
+                    height={64}
+                    sizes="180px"
+                    style={{ objectFit: "contain", height: 60, width: "100%" }}
                   />
                 </div>
               ) : (
